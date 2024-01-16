@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb9d0deebdc67a94bb947fc4cdb708ae, type: 3}
+  m_Name: PrefabsMenuDataTypeGameMode
+  m_EditorClassIdentifier: 
+  Autocomplete: {fileID: 3816835199042299381, guid: 3f87565e33116424bba64ec890772761, type: 3}
+  AutoCombobox: {fileID: 2992112375989442741, guid: 35690ffb79e64324b8ef9f65e0c41bc3, type: 3}
+  Combobox: {fileID: 2689618184721828476, guid: 6ad978c03205ec94488955527802c750, type: 3}
+  ComboboxMultiselect: {fileID: 6728629148705571079, guid: 2dd54ebcc98cafb41806d1eaa74dd927, type: 3}
+  DragInfo: {fileID: 7364726667536433434, guid: ae8203d9bcae2794dade1f7a753d407d, type: 3}
+  ListView: {fileID: 5212127051076598501, guid: ffc410e0d0afc974884fb6f1e102a681, type: 3}
+  Table: {fileID: 3341080891474187755, guid: 32c194196de192f43a4a7dcf16ed8b4c, type: 3}
+  TileView: {fileID: 2813566352961040343, guid: 729d58e74cd52f54da11de949a6e02ae, type: 3}
+  TreeGraph: {fileID: 6987077283755337569, guid: 1ffe492b5a20f6f4bae966b455b9afb8, type: 3}
+  TreeView: {fileID: 1000061655711480627, guid: e364b4aa5d098984e8c7760afb6c1001, type: 3}
+  PickerListView: {fileID: 48517453723453649, guid: 1529f00c10b3e3a44a57617743d3cb04, type: 3}
+  PickerTreeView: {fileID: 4473394458898024153, guid: 15867ab9a5fabc0458fed40bb5862814, type: 3}
+  Tooltip: {fileID: 7943132505247123280, guid: dc282a493c5a40d4f9b2198ab3b8bc31, type: 3}

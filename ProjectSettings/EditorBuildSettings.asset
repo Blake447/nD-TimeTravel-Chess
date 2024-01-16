@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1045 &1
+EditorBuildSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Blake447/Engine/GameScenes/MenuSystem.unity
+    guid: 734673bbcde5e80489e88127d97716c8
+  - enabled: 1
+    path: Assets/Blake447/Engine/GameScenes/LoadingLocal.unity
+    guid: 2c1830195c932734ab025044ac0aadbc
+  - enabled: 1
+    path: Assets/Blake447/Engine/GameScenes/LoadingNetworked.unity
+    guid: 7540559ae71b69d42935378b32287151
+  - enabled: 1
+    path: Assets/Blake447/Engine/GameScenes/singularity.unity
+    guid: b54958110e0d4754da08c40bb56adee8
+  - enabled: 1
+    path: Assets/Blake447/Engine/GameScenes/MVTime.unity
+    guid: 0b5a8c3e7480c6b4e8be8251acafc7a8
+  - enabled: 1
+    path: Assets/Blake447/Engine/GameScenes/LoadingEditor.unity
+    guid: cc813833f11b62a439d280f24a108435
+  - enabled: 1
+    path: Assets/Blake447/Engine/GameScenes/Editor.unity
+    guid: fa373c6045105b0468d85091757475c9
+  - enabled: 1
+    path: Assets/Blake447/Engine/GameScenes/LoadingTutorial.unity
+    guid: 86f6463aa1255724e9b6b30b07aa5849
+  - enabled: 1
+    path: Assets/Blake447/Engine/GameScenes/singularity_tutorial.unity
+    guid: 62b530750ff1d384e85dd1a4d23dfb71
+  m_configObjects: {}
