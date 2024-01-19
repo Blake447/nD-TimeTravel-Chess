@@ -189,7 +189,7 @@ public class GameClient : MonoBehaviour
         //}
         void Update()
         {
-            if (game != null && game.IsGameInProgress())
+            if (game != null)
                 HandleCasts();
         }
         #endregion

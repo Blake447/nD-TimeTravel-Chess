@@ -199,7 +199,7 @@ public class CameraRig : MonoBehaviour
             int offset = max;
             int cam_right = Input.GetKey(KeyCode.D) ? 1 : 0;
             int cam_forward = Input.GetKey(KeyCode.W) ? 1 : 0;
-            int cam_left = Input.GetKey(KeyCode.A) ? 1 : 0;
+            int cam_left = (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.Q)) ? 1 : 0;
             int cam_back = Input.GetKey(KeyCode.S) ? 1 : 0;
 
             int[] weights = new int[] { cam_right, cam_forward, cam_left, cam_back };
