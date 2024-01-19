@@ -52,8 +52,10 @@ MonoBehaviour:
   allowPromotions: 0
   friendlyVisualizer: 1
   enemyVisualizer: 1
+  multiverse_offset: 40
+  timetravel_offset: 20
   timeIndex: 4
-  dimensions: 1000000008000000080000000800000008000000
+  dimensions: 1000000008000000080000002000000020000000
   board_state: 
   forwards: 0000000001000000010000000000000000000000
   laterals: 0100000000000000000000000000000000000000

@@ -55,7 +55,7 @@ MonoBehaviour:
   multiverse_offset: 60
   timetravel_offset: 20
   timeIndex: 5
-  dimensions: 060000000600000006000000060000000800000008000000
+  dimensions: 060000000600000006000000060000002000000020000000
   board_state: 
   forwards: 
   laterals: 
