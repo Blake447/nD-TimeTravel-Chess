@@ -8,6 +8,8 @@ Shader "GPU-Instanced/MatCap Two Color"
     Properties
     {    
         _MainTex("Texture", 2D) = "white" {}
+        _MainTex2("Texture", 2D) = "white" {}
+
         _MatCap0 ("MatCap White (RGB)", 2D) = "white" {}
         _MatCap1 ("MatCap Black (RGB)", 2D) = "white" {}
 
@@ -66,6 +68,8 @@ Shader "GPU-Instanced/MatCap Two Color"
 
 
             UNITY_DECLARE_TEX2D(_MainTex); 
+            UNITY_DECLARE_TEX2D(_MainTex2);
+
             half4 _MainTex_ST;
 
             UNITY_DECLARE_TEX2D(_MatCap0);
@@ -76,7 +80,8 @@ Shader "GPU-Instanced/MatCap Two Color"
             float2 matcapSample(float3 viewDirection, float3 normalDirection)
             {
                 half3 worldUp = float3(0,1,0);
-                half3 worldViewUp = normalize(worldUp - viewDirection * dot(viewDirection, worldUp));
+                //half3 worldViewUp = normalize(worldUp - viewDirection * dot(viewDirection, worldUp));
+                half3 worldViewUp = worldUp;
                 half3 worldViewRight = normalize(cross(viewDirection, worldViewUp));
                 half2 matcapUV = half2(dot(worldViewRight, normalDirection), dot(worldViewUp, normalDirection)) * 0.5 + 0.5;
                 return matcapUV;
@@ -125,11 +130,15 @@ Shader "GPU-Instanced/MatCap Two Color"
                 float parity = UNITY_ACCESS_INSTANCED_PROP(Props, _Parity);
 
                 float4 mc0 = UNITY_SAMPLE_TEX2D(_MatCap0, i.matcapUV);
-                float4 mc1 = UNITY_SAMPLE_TEX2D(_MatCap1, i.matcapUV);
+                //float4 mc1 = UNITY_SAMPLE_TEX2D(_MatCap1, i.matcapUV);
 
-                half4 final = lerp(mc0, mc1, parity) * (_Color + i.indirect);
+                half4 final = mc0 * (_Color + i.indirect);;
+                //half4 final = lerp(mc0, mc1, parity) * (_Color + i.indirect);
                 
-                float4 col = UNITY_SAMPLE_TEX2D(_MainTex, i.uv);
+                float4 col0 = UNITY_SAMPLE_TEX2D(_MainTex, i.uv);
+                float4 col1 = UNITY_SAMPLE_TEX2D(_MainTex2, i.uv);
+
+                half4 col = lerp(col0, col1, parity) * (_Color + i.indirect);
 
                 return float4(final.rgb*col.rgb, 1);
             }
