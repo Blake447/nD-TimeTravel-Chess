@@ -346,7 +346,7 @@ public class GameInstance : MonoBehaviour
     }
     public bool ArePlayersReady()
     {
-        return player_types[0] != PLAYER_NONE && player_types[1] != PLAYER_NONE;
+        return player_types[0] != PLAYER_NONE && player_types[1] != PLAYER_NONE && player_types[0] != PLAYER_AI && player_types[1] != PLAYER_AI;
     }
 
     // game state
@@ -453,7 +453,10 @@ public class GameInstance : MonoBehaviour
             {
                 if (IsCoordinateInCheck(royalty_coordinates[i]))
                 {
-                    return true;
+                    bool isPlayersBoard = multiverse.IsPlayersBoard(royalty_coordinates[i], player);
+                    bool isMultiverse = multiverse.GetComponent<MVTime>() != null;
+                    bool ignoreBoard = (isPlayersBoard && isMultiverse);
+                    return (!ignoreBoard) && true;
                 }
             }
         }

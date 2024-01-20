@@ -611,7 +611,6 @@ public class Historian : MonoBehaviour
         if (game.IsPlayerInCheck(currentPlayer))
             return false;
 
-
         if (activeBoards > 0)
             return false;
 

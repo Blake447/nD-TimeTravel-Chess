@@ -460,6 +460,7 @@ public class MVTime : Multiverse
     }
     public void RevertTimeline(int m, bool isTimeTravel)
     {
+        Debug.Log("Reverting timline " + m);
         int index = TimelineToIndex(m);
         if (multiverse != null && index < multiverse.Length)
         {
@@ -487,21 +488,23 @@ public class MVTime : Multiverse
                         }
                         else
                         {
+                            Debug.Log("Removed last mvnode in " + m);
                             multiverse[index] = null;
                             bool isLastMultiverse = true;
-                            for (int sentinel = index; sentinel < multiverse.Length; sentinel++)
-                            {
-                                if (multiverse[sentinel] != null)
-                                {
-                                    isLastMultiverse = false;
-                                }
-                            }
-                            if (isLastMultiverse && index > 1)
-                            {
-                                MVNode[][] new_multiverse = new MVNode[index - 1][];
-                                System.Array.Copy(multiverse, 0, new_multiverse, 0, new_multiverse.Length);
-                                this.multiverse = new_multiverse;
-                            }
+                            //for (int sentinel = index; sentinel < multiverse.Length; sentinel++)
+                            //{
+                            //    if (multiverse[sentinel] != null)
+                            //    {
+                            //        isLastMultiverse = false;
+                            //    }
+                            //}
+                            //if (isLastMultiverse && index > 1)
+                            //{
+                            //    Debug.Log("Detected index " + index + " to be the furthest multiverse out, removing branch")
+                            //    MVNode[][] new_multiverse = new MVNode[index - 1][];
+                            //    System.Array.Copy(multiverse, 0, new_multiverse, 0, new_multiverse.Length);
+                            //    this.multiverse = new_multiverse;
+                            //}
                         }
                     }
                 }

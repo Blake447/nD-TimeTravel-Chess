@@ -86,7 +86,7 @@ public class GizmoVerse : MonoBehaviour
                 int count = timelineList.Count;
                 while (target_wi >= timelineList.Count || target_bi >= timelineList.Count)
                 {
-                    Debug.Log("Target White: " + target_wi + " - Target Black: " + target_bi + " - timelineList.Count: " + timelineList.Count);
+                    //Debug.Log("Target White: " + target_wi + " - Target Black: " + target_bi + " - timelineList.Count: " + timelineList.Count);
                     GizmoNode empty = new GizmoNode();
                     empty.iFrom = -1;
                     empty.tStart = -1;
@@ -134,7 +134,7 @@ public class GizmoVerse : MonoBehaviour
         for (int i = 0; i < timelineList.Count; i++)
         {
             GizmoNode node = timelineList[i];
-            Debug.Log("node " + i.ToString("00") + " - iFrom: " + node.iFrom + " - tStart: " + node.tStart + " - tEnd: " + node.tEnd);
+            //Debug.Log("node " + i.ToString("00") + " - iFrom: " + node.iFrom + " - tStart: " + node.tStart + " - tEnd: " + node.tEnd);
         }
         SetArrows();
     }

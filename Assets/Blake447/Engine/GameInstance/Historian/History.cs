@@ -49,10 +49,20 @@ public class History
             System.Array.Copy(temp, 3 + from_length + 1, to, 0, to_length);
 
             Command comm = new Command(pfrom, pto, (int[])from.Clone(), (int[])to.Clone());
+            Debug.Log("Command( " + pfrom + ", " + pto + ", " + Coordinates.CoordinateToString(from) + ", " + Coordinates.CoordinateToString(to) + " ) @ " + "(" + t + ", " + m + ")");
+
+            bool isLastCommand = true;
+            if (index + length + 2 < serialized.Length)
+            {
+                isLastCommand = serialized[index + length + 2] != serialized[index + 2];
+            }
             move.Add(comm);
-            turn.Add(move);
+            if (isLastCommand)
+                turn.Add(move);
+           
             index += length;
         }
+        PrintHistory();
     }
 
 
@@ -277,23 +287,23 @@ public class History
     }
     public void PrintHistory()
     {
-        //int[] history = this.Serialized();
-        //Debug.Log("Printing History");
-        //for (int i = 0; i < Turns.Count; i++)
-        //{
-        //    Debug.Log("Turn");
-        //    Move move_sentinel = Turns[i].tail;
-        //    while (move_sentinel != null)
-        //    {
-        //        Debug.Log("L_move");
-        //        Command command_sentinel = move_sentinel.tail;
-        //        while (command_sentinel != null)
-        //        {
-        //            Debug.Log("L___" + command_sentinel.CommandToString());
-        //            command_sentinel = command_sentinel.next;
-        //        }
-        //        move_sentinel = move_sentinel.next;
-        //    }
-        //}
+        int[] history = this.Serialized();
+        Debug.Log("Printing History");
+        for (int i = 0; i < Turns.Count; i++)
+        {
+            Debug.Log("Turn");
+            Move move_sentinel = Turns[i].tail;
+            while (move_sentinel != null)
+            {
+                Debug.Log("L_move");
+                Command command_sentinel = move_sentinel.tail;
+                while (command_sentinel != null)
+                {
+                    Debug.Log("L___" + command_sentinel.CommandToString());
+                    command_sentinel = command_sentinel.next;
+                }
+                move_sentinel = move_sentinel.next;
+            }
+        }
     }
 }
