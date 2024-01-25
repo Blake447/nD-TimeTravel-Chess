@@ -17,7 +17,8 @@ public class BoardLoader
         string filePath = Application.persistentDataPath + "/game_state_" + name + ".data";
         if (File.Exists(filePath))
         {
-            Debug.LogError("Unable to save game, file " + filePath + " already exists");
+            //Debug.LogError("save failed, " + filePath + " already exists");
+            Messanger.DisplayMessage("Save failed, " + filePath + " already exists");
         }
         else
         {
@@ -26,7 +27,8 @@ public class BoardLoader
             int[] serialized = (int[])history.Serialized().Clone();
             converter.Serialize(dataStream, serialized);
             dataStream.Close();
-            Debug.Log("BoardState " + name + " saved to file path " + filePath);
+            //Debug.Log("BoardState " + name + " saved to file path " + filePath);
+            Messanger.DisplayMessage("Saved to file path " + filePath);
         }
     }
     static public void SaveRecovery(int[] recovery)
@@ -87,6 +89,8 @@ public class BoardLoader
 
         dataStream.Close();
         Debug.Log("BoardState " + name + " saved to file path " + filePath);
+        Messanger.DisplayMessage("Saved to file path " + filePath);
+
 #endif
     }
     static public BoardState LoadCustomBoardState(string name)
