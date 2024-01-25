@@ -56,12 +56,12 @@ public class BoardLoader
             bool pushToNetwork = true;
             historian.SetFromHistory(history, pushToNetwork);
 
-            Debug.Log("BoardState " + name + " loaded from file path " + filePath);
+            Messanger.DisplayMessage("BoardState " + name + " loaded from file path " + filePath);
             //return boardState;
         }
         else
         {
-            Debug.Log("No history found with name " + name);
+            Messanger.DisplayMessage("No history found with name " + name);
         }
     }
 
@@ -77,7 +77,7 @@ public class BoardLoader
         converter.Serialize(dataStream, boardState);
 
         dataStream.Close();
-        Debug.Log("BoardState " + name + " saved to file path " + filePath);
+        Messanger.DisplayMessage("BoardState " + name + " saved to file path " + filePath);
         UnityEditor.AssetDatabase.Refresh();
 #else
         string name = boardState.name;
@@ -108,7 +108,7 @@ public class BoardLoader
             dataStream.Close();
 
             loaded_state = boardState;
-            Debug.Log("BoardState " + name + " loaded from file path " + filePath);
+            Messanger.DisplayMessage("BoardState " + name + " loaded from file path " + filePath);
             return boardState;
         }
         else
@@ -126,12 +126,12 @@ public class BoardLoader
                 dataStream.Close();
 
                 loaded_state = boardState;
-                Debug.Log("BoardState " + name + " loaded from file path " + filePathPersistant);
+                Messanger.DisplayMessage("BoardState " + name + " loaded from file path " + filePathPersistant);
                 return boardState;
             }
             else
             {
-                Debug.Log("BoardState " + name + " failed to load from " + filePathPersistant);
+                Messanger.DisplayMessage("BoardState " + name + " failed to load from " + filePathPersistant);
                 return null;
             }
         }
