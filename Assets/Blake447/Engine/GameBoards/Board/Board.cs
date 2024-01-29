@@ -292,7 +292,7 @@ public class Board : MonoBehaviour
             int piece = pieces[index];
             return piece;
         }
-        return 0;
+        return -1;
     }
     public virtual int GetPieceAt(int index)
     {

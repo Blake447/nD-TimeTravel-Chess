@@ -228,7 +228,7 @@ public class nChessPiece
             int ghostPawn = 30;
             isClear = true;
             for (int i = 0; i < strip_march.Length - 1; i++)
-                isClear = isClear && ((strip_march[i] == 0) || ((strip_march[i] % 32) == 30));
+                isClear = isClear && ((strip_march[i] == 0) || ((strip_march[i] % 32) == 30)) && (strip_march[i] != -1);
             int last_piece = strip_march[strip_march.Length - 1];
             int last_color = last_piece / 32;
             if ( (last_piece) != 0 && (last_color == color_from) )

@@ -182,10 +182,10 @@ public class Western : PiecePallete
         if (allowPromotions)
             rPawn.AddPromotion(promotion_distance, 2);
 
-        nChessPiece Flyer = new nChessPiece("Flyer", 14, dimensions.Length);
-        Flyer.SetAgonals(new int[1] { 5 });
-        Flyer.SetConditions(new int[1] { nChessPiece.CONDITION_NONOCCLUDED });
-        Flyer.SetConditions(new int[1] { nChessPiece.CONDITION_NONOCCLUDED });
+        nChessPiece Devil = new nChessPiece("Devil", 14, dimensions.Length);
+        Devil.SetAgonals(new int[1] { 5 });
+        Devil.SetConditions(new int[1] { nChessPiece.CONDITION_NONOCCLUDED });
+        Devil.SetConditions(new int[1] { nChessPiece.CONDITION_NONOCCLUDED });
         //Dragon.SetMutualExclusions(forward_lateral_rule);
 
 
@@ -232,7 +232,7 @@ public class Western : PiecePallete
 
         AssignPiece(CheckDetector);
 
-        AssignPiece(Flyer);
+        AssignPiece(Devil);
 
         AssignPiece(PawnStarting);
         AssignPiece(PawnAttacking);

@@ -7,11 +7,11 @@ public class PalleteButton : MonoBehaviour
     public TMPro.TMP_Text text;
     public BoardEditor editor;
     int piece_index;
-    public void SetChessPiece(nChessPiece piece)
+    public void SetChessPiece(nChessPiece piece, int id)
     {
         if (piece != null)
         {
-            text.text = piece.name;
+            text.text = id + ": " + piece.name;
             piece_index = piece.ID;
         }
     }

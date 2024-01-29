@@ -210,7 +210,7 @@ public class BoardEditor : MonoBehaviour
                 PalleteButton button = Instantiate(defaultButton);
                 button.transform.SetParent(defaultButton.transform.parent);
                 button.transform.localScale = Vector3.one;
-                button.SetChessPiece(piece);
+                button.SetChessPiece(piece, i);
             }
        
             
