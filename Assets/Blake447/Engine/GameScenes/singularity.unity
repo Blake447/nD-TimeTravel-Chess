@@ -835,6 +835,38 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: -8832581957938933065, guid: fc7c5de68ff525c49ae3434c3eecf2cb, type: 3}
   - {fileID: 0}
+  - {fileID: 6158442405193644133, guid: 9bc220bd2447ad34ca9550b7ee576961, type: 3}
+  - {fileID: -6130387339575002002, guid: 4c1497055c2705443a873bcb278487c3, type: 3}
+  - {fileID: 8003968359395002001, guid: 4c1497055c2705443a873bcb278487c3, type: 3}
+  - {fileID: -5153617368765860725, guid: 9bc220bd2447ad34ca9550b7ee576961, type: 3}
+  - {fileID: 7851040761853392914, guid: 9bc220bd2447ad34ca9550b7ee576961, type: 3}
+  - {fileID: -1157777841789006377, guid: 9bc220bd2447ad34ca9550b7ee576961, type: 3}
+  - {fileID: 4420167258843829839, guid: 9bc220bd2447ad34ca9550b7ee576961, type: 3}
+  - {fileID: -1825951862689097996, guid: 9bc220bd2447ad34ca9550b7ee576961, type: 3}
+  - {fileID: -6358541203011195431, guid: 9bc220bd2447ad34ca9550b7ee576961, type: 3}
+  - {fileID: 4977981846946037216, guid: 9bc220bd2447ad34ca9550b7ee576961, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1 &161877353
 GameObject:
   m_ObjectHideFlags: 0
@@ -6113,6 +6145,7 @@ MonoBehaviour:
   minZoom: 0
   maxZoom: 50
   spdZoom: 5
+  androidZoom: -1
 --- !u!1 &2007676862
 GameObject:
   m_ObjectHideFlags: 0

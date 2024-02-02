@@ -30,7 +30,8 @@ public class CameraRig : MonoBehaviour
     public float maxZoom = 50.0f;
     public float spdZoom = 5.0f;
 
-
+    public float androidZoom = -1.0f;
+    Vector2 lastPosition = new Vector2(-1.0f, -1.0f);
 
     bool didRaycastMiss = false;
     bool isLocked;
@@ -81,9 +82,10 @@ public class CameraRig : MonoBehaviour
                 didRaycastMiss = false;
             }
         }
+
         if (Input.GetMouseButton(1))
         {
-            if (Input.GetKey(KeyCode.LeftShift))
+            if (Input.GetKey(KeyCode.LeftShift)) // translation
             {
                 Vector3 mouseDelta = new Vector3(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"), 0.0f);
                 Vector3 camera_right = Camera.main.transform.right;
@@ -91,7 +93,7 @@ public class CameraRig : MonoBehaviour
                 CameraTarget.transform.position = CameraTarget.transform.position - camera_right * hmove * mouseDelta.x * curZoom * 0.005f;
                 CameraTarget.transform.position = CameraTarget.transform.position - camera_up * vmove * mouseDelta.y * curZoom * 0.005f;
             }
-            else
+            else // rotation
             {
                 Vector3 mouseDelta = new Vector3(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"), 0.0f);
                 float offset_x = mouseDelta.x * hsense;
@@ -104,7 +106,7 @@ public class CameraRig : MonoBehaviour
                 CameraTarget.transform.rotation = yrotation * CameraTarget.transform.rotation;
             }
         }
-        if (didRaycastMiss && !isLocked)
+        if (didRaycastMiss && !isLocked) // Translation
         {
             Vector3 mouseDelta = new Vector3(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"), 0.0f);
             Vector3 camera_right = Camera.main.transform.right;
@@ -113,30 +115,91 @@ public class CameraRig : MonoBehaviour
             CameraTarget.transform.position = CameraTarget.transform.position - camera_up * vmove * mouseDelta.y * curZoom * 0.005f;
         }
 
-
-        
-        //if (Input.GetMouseButtonDown(1))
-        //{
-        //    startPosition = Input.mousePosition;
-        //}
-
-        //if (Input.GetMouseButton(1))
-        //{
-        //    Vector3 mouseDelta = Input.mousePosition - startPosition;
-        //    if (mouseDelta.magnitude > 100.0f)
-        //    {
-        //        float offset_x = mouseDelta.x * hsense;
-        //        float offset_y = mouseDelta.y * vsense;
-
-        //        Quaternion xrotation = Quaternion.AngleAxis(offset_x, Vector3.up);
-        //        CameraTarget.transform.rotation = xrotation * CameraTarget.transform.rotation;
-
-        //        Quaternion yrotation = Quaternion.AngleAxis(offset_y, CameraTarget.transform.right);
-        //        CameraTarget.transform.rotation = yrotation * CameraTarget.transform.rotation;
-        //    }
-
-        //}
     }
+
+    void GetTouchInput()
+    {
+        if (Input.touchCount > 0)
+        {
+            float zoomScale = 0.1f;
+            float zoom = 0;
+            bool rotateClick = false; ;
+            Vector2 rotate = Vector2.zero;
+            bool translateclick = false;
+            Vector2 translate = Vector2.zero;
+            bool click = false;
+            
+
+            if (Input.touchCount > 1)
+            {
+                Touch touch0 = Input.GetTouch(0);   
+                Touch touch1 = Input.GetTouch(1);
+                if (touch0.phase == TouchPhase.Moved && touch1.phase == TouchPhase.Moved)
+                {
+                    zoom = Vector2.Distance(touch0.position + touch0.deltaPosition*zoomScale*Time.deltaTime, touch1.position + touch1.deltaPosition * zoomScale * Time.deltaTime) - Vector2.Distance(touch0.position, touch1.position);
+                    translate = (touch0.deltaPosition + touch1.deltaPosition) * 0.5f * 0.1f;
+                    translateclick = true;
+                }
+                
+            }
+            else if (Input.touchCount > 0)
+            {
+                Touch touch0 = Input.GetTouch(0);
+                if (touch0.phase == TouchPhase.Moved)
+                {
+                    rotate = touch0.deltaPosition * 0.1f;
+                    rotateClick = true;
+                }
+            }
+
+
+            curZoom -= spdZoom * zoom * Time.deltaTime * 60.0f;
+            curZoom = Mathf.Clamp(curZoom, minZoom, maxZoom);
+            Camera.gameObject.transform.localPosition = Vector3.forward * curZoom;
+
+            if (didRaycastMiss)
+            {
+                if (Input.touchCount > 1)
+                    didRaycastMiss = false;
+            }
+
+            if (translateclick || rotateClick)
+            {
+                if (translateclick) // translation
+                {
+                    Vector3 mouseDelta = new Vector3(translate.x, translate.y, 0.0f);
+                    Vector3 camera_right = Camera.main.transform.right;
+                    Vector3 camera_up = Camera.main.transform.up;
+                    CameraTarget.transform.position = CameraTarget.transform.position - camera_right * hmove * mouseDelta.x * curZoom * 0.005f;
+                    CameraTarget.transform.position = CameraTarget.transform.position - camera_up * vmove * mouseDelta.y * curZoom * 0.005f;
+                }
+                else // rotation
+                {
+                    Vector3 mouseDelta = new Vector3(rotate.x, rotate.y, 0.0f);
+                    float offset_x = mouseDelta.x * hsense;
+                    float offset_y = mouseDelta.y * vsense;
+
+                    Quaternion xrotation = Quaternion.AngleAxis(offset_x, Vector3.up);
+                    CameraTarget.transform.rotation = xrotation * CameraTarget.transform.rotation;
+
+                    Quaternion yrotation = Quaternion.AngleAxis(offset_y, CameraTarget.transform.right);
+                    CameraTarget.transform.rotation = yrotation * CameraTarget.transform.rotation;
+                }
+            }
+            if (didRaycastMiss && !isLocked && translateclick) // Translation
+            {
+                Vector3 mouseDelta = new Vector3(translate.x, translate.y, 0.0f);
+                Vector3 camera_right = Camera.main.transform.right;
+                Vector3 camera_up = Camera.main.transform.up;
+                CameraTarget.transform.position = CameraTarget.transform.position - camera_right * hmove * mouseDelta.x * curZoom * 0.005f;
+                CameraTarget.transform.position = CameraTarget.transform.position - camera_up * vmove * mouseDelta.y * curZoom * 0.005f;
+            }
+        }
+
+    }
+
+
+
     void RotatePivotToTarget()
     {
         if (CameraTarget != null && CameraObject != null)
@@ -227,7 +290,11 @@ public class CameraRig : MonoBehaviour
     void Update()
     {
         //DriveCameraLocalPosition();
+#if UNITY_ANDROID
+        GetTouchInput();
+#else
         GetMouseInput();
+#endif
         GetKeyInput();
         RotatePivotToTarget();
     }

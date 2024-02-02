@@ -33,13 +33,15 @@ public class Square : MonoBehaviour
             black_block.SetFloat("_Parity", 1);
         }
 
-        int array_index = piece_index % 32;
+        int array_index = piece_index % Overseer.PIECE_COUNT;
 
  
 
         meshFilter.mesh = pallete.GetMeshIndex(array_index);
-        int mat_index = piece_index / 32;
+        int mat_index = piece_index / Overseer.PIECE_COUNT;
         meshRenderer.SetPropertyBlock(mat_index == 0 ? white_block : black_block);
+        meshRenderer.transform.rotation = Quaternion.LookRotation((-1 + 2 * mat_index)*meshRenderer.transform.parent.up, meshRenderer.transform.parent.forward);
+
     }
     public void SetMeshShogi(int piece_index)
     {
@@ -57,21 +59,21 @@ public class Square : MonoBehaviour
             black_block.SetFloat("_Parity", 1);
         }
 
-        int array_index = piece_index % 32;
+        int array_index = piece_index % Overseer.PIECE_COUNT;
         //Debug.Log(array_index);
         meshFilter.mesh = pallete.GetMeshIndex(array_index);
 
-        int mat_index = piece_index / 32;
+        int mat_index = piece_index / Overseer.PIECE_COUNT;
         if (meshRenderer.materials.Length < 2)
         {
             meshRenderer.materials = new Material[] { meshRenderer.material, meshRenderer.material };
         }
         meshRenderer.SetPropertyBlock(mat_index == 0 ? white_block : black_block, 0);
         meshRenderer.SetPropertyBlock(mat_index == 0 ? black_block : white_block, 1);
-        if (piece_index != 0 && (piece_index / 32) == 0)
+        if (piece_index != 0)
         {
             //this.transform.localRotation = Quaternion.identity;
-            meshRenderer.transform.rotation = Quaternion.AngleAxis(180.0f, Vector3.up);
+            meshRenderer.transform.rotation = Quaternion.AngleAxis(180.0f*mat_index, Vector3.up);
         }
         else
         {

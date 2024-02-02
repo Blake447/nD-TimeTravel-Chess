@@ -42,6 +42,9 @@ public class PrimaryMenu : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
+#if UNITY_ANDROID
+        Screen.orientation = ScreenOrientation.LandscapeLeft;
+#endif
         // Construct singleton menu
         if (menu == null)
         {

@@ -97,7 +97,7 @@ public class BoardTutorial : MonoBehaviour
     {
         Multiverse multiverse = game.GetMultiverse();
         Board board = multiverse.GetBoardFromCoordinate(coordinate);
-        multiverse.SetPieceAt(selectedPiece + (mouseButton == 1 ? 32 : 0), coordinate);
+        multiverse.SetPieceAt(selectedPiece + (mouseButton == 1 ? Overseer.PIECE_COUNT : 0), coordinate);
     }
     void ClickWheelOnCoordinate(int[] coordinate)
     {

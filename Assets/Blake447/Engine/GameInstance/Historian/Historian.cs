@@ -168,7 +168,7 @@ public class Historian : MonoBehaviour
     {
         if (head != null && head.tail == null && head.prev != null && head.prev.tail != null && head.prev.tail.tail != null)
         {
-            int prev_color = head.prev.tail.tail.pfrom / 32;
+            int prev_color = head.prev.tail.tail.pfrom / Overseer.PIECE_COUNT;
             Debug.Log("Previous color: " + prev_color);
             game.CyclePlayerTurn(prev_color);
         }
@@ -581,7 +581,7 @@ public class Historian : MonoBehaviour
             Command command = turn_applied?.head?.tail;
             if (command != null)
             {
-                player_from = command.pfrom / 32;
+                player_from = command.pfrom / Overseer.PIECE_COUNT;
                 if (command.pfrom == 0)
                     Debug.LogWarning("Warning, submitting turn moving a blank square");
             }

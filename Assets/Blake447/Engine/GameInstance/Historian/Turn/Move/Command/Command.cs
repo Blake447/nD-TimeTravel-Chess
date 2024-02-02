@@ -66,13 +66,13 @@ public class Command
     public string CommandToString()
     {
         return pfrom.ToString() + "-" + pto.ToString() + " : " + Coordinates.CoordinateToString(from) + " -> " + Coordinates.CoordinateToString(to);
-        int piece_from = pfrom % 32;
-        int color_from = pfrom / 32;
+        int piece_from = pfrom % Overseer.PIECE_COUNT;
+        int color_from = pfrom / Overseer.PIECE_COUNT;
         string pf = "" + pieces[piece_from];
         if (color_from == 0 && piece_from != 0)
             pf = (pf).ToUpper();
-        int piece_to = pto % 32;
-        int color_to = pto / 32;
+        int piece_to = pto % Overseer.PIECE_COUNT;
+        int color_to = pto / Overseer.PIECE_COUNT;
         string pt = "" + pieces[piece_to];
         if (color_to == 0 && piece_to != 0)
             pt = (pt).ToUpper();

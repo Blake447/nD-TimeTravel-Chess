@@ -95,7 +95,14 @@ public class BoardLoader
     }
     static public BoardState LoadCustomBoardState(string name)
     {
-        //string filePath = Resources.Load < FildSt >
+#if UNITY_ANDROID
+        string fileNameWithoutExtension = Path.GetFileNameWithoutExtension(name);
+        TextAsset textAsset = Resources.Load(fileNameWithoutExtension) as TextAsset;
+        Stream stream = new MemoryStream(textAsset.bytes);
+        BinaryFormatter formatter = new BinaryFormatter();
+        BoardState boardState = formatter.Deserialize(stream) as BoardState;
+        return boardState;
+#else
         string filePath = Application.dataPath + "/StreamingAssets/saves/" + name + ".data";
         if (File.Exists(filePath))
         {
@@ -135,5 +142,6 @@ public class BoardLoader
                 return null;
             }
         }
+#endif
     }
 }

@@ -65,7 +65,7 @@ public class GizmoVerse : MonoBehaviour
             GizmoNode nodeTo = timelineList[iTo];
             if (tTo < nodeTo.tEnd)
             {
-                int color = (command.pfrom / 32);
+                int color = (command.pfrom / Overseer.PIECE_COUNT);
                 bool isBlack = color == 1;
                 int maxWhite = 0;
                 int maxBlack = 0;

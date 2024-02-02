@@ -19,12 +19,12 @@ public class PieceDefiner
     public int permutables_move_count = 0;
     public int[][] moves_permutables;
 
-    int[][][] moves_array = new int[32][][];
-    int[] moves_array_lengths = new int[32];
+    int[][][] moves_array = new int[Overseer.PIECE_COUNT][][];
+    int[] moves_array_lengths = new int[Overseer.PIECE_COUNT];
 
     int BUFFER_INDEX = 31;
 
-    nChessPiece[] chessPieces = new nChessPiece[32];
+    nChessPiece[] chessPieces = new nChessPiece[Overseer.PIECE_COUNT];
 
     public void GeneratePieceMoves(nChessPiece[] pieces, int[] dimensions)
     {

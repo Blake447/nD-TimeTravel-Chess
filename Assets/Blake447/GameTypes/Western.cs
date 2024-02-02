@@ -215,6 +215,72 @@ public class Western : PiecePallete
 
         nChessPiece GhostPawn = new nChessPiece("Ghost Pawn", 30, dimensions.Length);
 
+
+
+        nChessPiece sKing = new nChessPiece("Shogi King", 32, dimensions.Length);
+        sKing.SetAgonals(all);
+        sKing.SetRange(1);
+        sKing.isRoyalty = true;
+        if (useForwardLateralExclusion)
+            sKing.SetMutualExclusions(forward_lateral_rule);
+
+        nChessPiece Cross = new nChessPiece("Cross", 33, dimensions.Length);
+        Cross.SetAgonals(new int[1] { 1 });
+        Cross.SetRange(1);
+        if (useForwardLateralExclusion)
+            Cross.SetMutualExclusions(forward_lateral_rule);
+
+        nChessPiece Ex = new nChessPiece("Ex", 34, dimensions.Length);
+        Ex.SetAgonals(new int[1] { 2 });
+        Ex.SetRange(1);
+        if (useForwardLateralExclusion)
+            Ex.SetMutualExclusions(forward_lateral_rule);
+
+        nChessPiece sRook = new nChessPiece("sRook", 35, dimensions.Length);
+        sRook.SetAgonals(new int[1] { 1 });
+        sRook.SetConditions(new int[1] { nChessPiece.CONDITION_NONOCCLUDED });
+
+        nChessPiece sBishop = new nChessPiece("sBishop", 36, dimensions.Length);
+        sBishop.SetAgonals(new int[1] { 2 });
+        sBishop.SetConditions(new int[1] { nChessPiece.CONDITION_NONOCCLUDED });
+        if (useForwardLateralExclusion)
+            sBishop.SetMutualExclusions(forward_lateral_rule);
+
+        nChessPiece Gold = new nChessPiece("Gold", 37, dimensions.Length);
+        Gold.SetAgonals(new int[1] { 2 });
+        Gold.SetRange(1);
+        Gold.AddColorModifier(new int[4] { 0, 1, 0, 1 });
+        Gold.AddColorExclusion(new int[4] { 0, -1, 0, -1 });
+        Gold.subpieces = new nChessPiece[1] { Cross };
+        if (useForwardLateralExclusion)
+            Gold.SetMutualExclusions(forward_lateral_rule);
+
+        nChessPiece Silver = new nChessPiece("Silver", 38, dimensions.Length);
+        Silver.SetAgonals(new int[1] { 1 });
+        Silver.SetRange(1);
+        Silver.AddDirectExclusion(new int[4] { 1, 0, 1, 0 });
+        Silver.AddColorModifier(new int[4] { 0, 1, 0, 1 });
+        Silver.AddColorExclusion(new int[4] { 0, -1, 0, -1 });
+        Silver.subpieces = new nChessPiece[1] { Ex };
+        if (useForwardLateralExclusion)
+            Silver.SetMutualExclusions(forward_lateral_rule);
+
+        nChessPiece sKnight = new nChessPiece("sKnight", 39, dimensions.Length);
+
+        nChessPiece Lance = new nChessPiece("sLance", 40, dimensions.Length);
+        Lance.SetAgonals(new int[1] { 1 });
+        Lance.AddColorModifier(new int[4] { 0, 1, 0, 1 });
+        Lance.AddColorExclusion(new int[4] { 0, -1, 0, -1 });
+        Lance.AddDirectExclusion(new int[4] { 1, 0, 1, 0 });
+        Lance.SetConditions(new int[1] { nChessPiece.CONDITION_NONOCCLUDED });
+
+        nChessPiece sPawn = new nChessPiece("sPawn", 41, dimensions.Length);
+        sPawn.SetAgonals(new int[1] { 1 });
+        sPawn.SetRange(1);
+        sPawn.AddColorModifier(new int[4] { 0, 1, 0, 1 });
+        sPawn.AddColorExclusion(new int[4] { 0, -1, 0, -1 });
+        sPawn.AddDirectExclusion(new int[4] { 1, 0, 1, 0 });
+
         AssignPiece(King);
         AssignPiece(Queen);
         AssignPiece(Bishop);
@@ -242,6 +308,16 @@ public class Western : PiecePallete
         AssignPiece(PawnNonStart);
         AssignPiece(GhostPawn);
 
+        AssignPiece(sKing);
+        AssignPiece(Cross);
+        AssignPiece(Ex);
+        AssignPiece(sRook);
+        AssignPiece(sBishop);
+        AssignPiece(Gold);
+        AssignPiece(Silver);
+        AssignPiece(sKnight);
+        AssignPiece(Lance);
+        AssignPiece(sPawn);
 
 
         base.GenerateMoves(dimensions);

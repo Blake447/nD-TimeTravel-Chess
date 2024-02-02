@@ -65,7 +65,7 @@ public class nChessPiece
     }
     //public int[][] GenerateMoveOffsets(int[] coordinate, int piece_id)
     //{
-    //    int color = piece_id / 32;
+    //    int color = piece_id / Overseer.PIECE_COUNT;
     //    int counter = CountMoves(color);
     //    if (counter == 0)
     //        return null;
@@ -132,8 +132,8 @@ public class nChessPiece
         int piece_from = command.pfrom;
         int piece_to = command.pto;
 
-        int color_from = piece_from / 32;
-        int color_to = piece_to / 32;
+        int color_from = piece_from / Overseer.PIECE_COUNT;
+        int color_to = piece_to / Overseer.PIECE_COUNT;
 
         int offset_length = Mathf.Min(coord_from.Length, coord_to.Length);
         int[] offset = new int[offset_length];
@@ -228,9 +228,9 @@ public class nChessPiece
             int ghostPawn = 30;
             isClear = true;
             for (int i = 0; i < strip_march.Length - 1; i++)
-                isClear = isClear && ((strip_march[i] == 0) || ((strip_march[i] % 32) == 30)) && (strip_march[i] != -1);
+                isClear = isClear && ((strip_march[i] == 0) || ((strip_march[i] % Overseer.PIECE_COUNT) == 30)) && (strip_march[i] != -1);
             int last_piece = strip_march[strip_march.Length - 1];
-            int last_color = last_piece / 32;
+            int last_color = last_piece / Overseer.PIECE_COUNT;
             if ( (last_piece) != 0 && (last_color == color_from) )
                 isClear = false;
         }

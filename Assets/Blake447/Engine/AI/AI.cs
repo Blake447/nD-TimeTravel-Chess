@@ -162,7 +162,7 @@ public class AI : MonoBehaviour
             Command command = move.tail;
             if (command != null)
             {
-                return piece_values[(command.pto % 32)] * (IsMaximizing(command.pto / 32) ? -1 : 1);
+                return piece_values[(command.pto % Overseer.PIECE_COUNT)] * (IsMaximizing(command.pto / Overseer.PIECE_COUNT) ? -1 : 1);
             }
         }
         return 0;
@@ -531,7 +531,7 @@ public class AI : MonoBehaviour
             {
                 int[] coordinate = board.IndexToCoordinate(i);
                 int piece_index = board.GetPieceAt(coordinate);
-                if (piece_index != 0 && (piece_index / 32) == player_turn)
+                if (piece_index != 0 && (piece_index / Overseer.PIECE_COUNT) == player_turn)
                 {
                     search_coordinates[count] = new int[coordinate.Length + 2];
                     System.Array.Copy(coordinate, search_coordinates[count], coordinate.Length);

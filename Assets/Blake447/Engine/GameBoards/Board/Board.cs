@@ -21,6 +21,20 @@ public class Board : MonoBehaviour
     [SerializeField] protected int[] dimensions = new int[] {8, 16};
     int[] previous_state;
 
+    public void ConvertLegacy()
+    {
+        for (int i = 0; i < GetPieceCount(); i++)
+        {
+            int[] coord = IndexToCoordinate(i);
+            int piece = GetPieceAt(coord);
+            if (piece > 31)
+            {
+                piece = piece % 32 + Overseer.PIECE_COUNT;
+                SetAtCoordinate(piece, coord);
+            }
+        }
+    }
+
     public void MirrorState(int dimension_index, bool negativeToPositive)
     {
         if (dimension_index < dimensions.Length)
@@ -38,7 +52,7 @@ public class Board : MonoBehaviour
                 {
                     int piece_mirror = GetPieceAt(mirrored);
                     if (piece_mirror != 0)
-                        SetAtCoordinate((piece_mirror + 32) % 64, coord);
+                        SetAtCoordinate((piece_mirror + Overseer.PIECE_COUNT) % (Overseer.PIECE_COUNT*2), coord);
                     else
                         SetAtCoordinate(0, coord);
 
@@ -66,7 +80,7 @@ public class Board : MonoBehaviour
                 {
                     int piece_mirror = GetPieceAt(mirrored);
                     if (piece_mirror != 0)
-                        SetAtCoordinate((piece_mirror + 32) % 64, coord);
+                        SetAtCoordinate((piece_mirror + Overseer.PIECE_COUNT) % (Overseer.PIECE_COUNT*2), coord);
                     else
                         SetAtCoordinate(0, coord);
                 }
@@ -164,7 +178,7 @@ public class Board : MonoBehaviour
         for (int i = 0; i < Mathf.Min(state.Length, pieces.Length); i++)
         {
             pieces[i] = state[i];
-            if (pieces[i] % 32 == 30) pieces[i] = 0;
+            if (pieces[i] % Overseer.PIECE_COUNT == 30) pieces[i] = 0;
             this.changes[i] = changes[i];
             this.enpassant[i] = enpassant[i];
         }
@@ -190,7 +204,7 @@ public class Board : MonoBehaviour
         {
             int[] coord = IndexToCoordinate(i);
             int piece_at = GetPieceAt(i);
-            if ( (piece_at % 32) == 30 )
+            if ( (piece_at % Overseer.PIECE_COUNT) == 30 )
             {
                 SetAtCoordinate(0, coord);
             }

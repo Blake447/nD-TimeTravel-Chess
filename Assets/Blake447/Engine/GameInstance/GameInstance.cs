@@ -449,7 +449,7 @@ public class GameInstance : MonoBehaviour
         for (int i = 0; i < royalty_coordinates.Length; i++)
         {
             int piece = multiverse.GetPieceAt(royalty_coordinates[i]);
-            if (piece != 0 && piece / 32 == player)
+            if (piece != 0 && piece / Overseer.PIECE_COUNT == player)
             {
                 if (IsCoordinateInCheck(royalty_coordinates[i]))
                 {

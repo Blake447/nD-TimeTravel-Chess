@@ -17,6 +17,8 @@ public class GameClient : MonoBehaviour
     
         int[] coordBuffer = null;
 
+        float touchTimer;
+
         public void SubmitTurn()
         {
             game.SubmitTurn();
@@ -115,7 +117,18 @@ public class GameClient : MonoBehaviour
                 cameraRig.SetRaycastMissed();
             hasHit = hasHit || CastGizmos();
             if (!hasHit)
+            {
+#if UNITY_ANDROID
+                if (Input.touchCount > 0)
+                {
+                    Touch touch = Input.GetTouch(0);
+                    if (touch.tapCount > 1)
+                        ClickOffBoard();
+                }
+#else
                 ClickOffBoard();
+#endif
+            }
         }
         bool CastUI()
         {
@@ -180,9 +193,9 @@ public class GameClient : MonoBehaviour
 
         
 
-        #endregion
+#endregion
         // methods like Awake, Update, Start
-        #region Standard Methods
+#region Standard Methods
         //private void Awake()
         //{
         //    InitializeClient();
@@ -192,9 +205,9 @@ public class GameClient : MonoBehaviour
             if (game != null)
                 HandleCasts();
         }
-        #endregion
+#endregion
         // Initialization and Reset
-        #region Setup
+#region Setup
         public void InitializeClient(GameInstance gameInstance)
         {
             game = gameInstance;
@@ -207,6 +220,6 @@ public class GameClient : MonoBehaviour
             }
             ClearBuffer();
         }
-        #endregion
+#endregion
     }
 }

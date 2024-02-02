@@ -11,7 +11,7 @@ public class PiecePallete : MonoBehaviour
 
 
 
-    const int PIECE_COUNT = 32;
+    int PIECE_COUNT = Overseer.PIECE_COUNT;
     nChessPiece[] chessPieces;
 
     [SerializeField]

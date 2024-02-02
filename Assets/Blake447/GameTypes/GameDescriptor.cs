@@ -13,6 +13,8 @@ public class GameDescriptor : MonoBehaviour
     public bool allowPromotions = true;
     public bool friendlyVisualizer = true;
     public bool enemyVisualizer = true;
+    public bool allowDrops = false;
+    public int dropsIndex;
 
     public float multiverse_offset = 40.0f;
     public float timetravel_offset = 20.0f;
@@ -21,7 +23,6 @@ public class GameDescriptor : MonoBehaviour
 
     public int[] dimensions;
     public int[] board_state;
-
 
     public int[] forwards;
     public int[] laterals;

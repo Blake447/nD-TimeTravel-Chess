@@ -50,8 +50,8 @@ public class Singularity : Multiverse
             {
                 int piece = board.GetPieceAt(s);
                 int king = 1;
-                int sking = 16;
-                if ((piece % 32) == king || (piece % 32) == sking)
+                int sking = 32;
+                if ((piece % Overseer.PIECE_COUNT) == king || (piece % Overseer.PIECE_COUNT) == sking)
                 {
                     int[] coordinate = board.IndexToCoordinate(s);
                     royalty.Add(coordinate);

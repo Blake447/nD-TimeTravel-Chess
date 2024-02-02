@@ -34,6 +34,12 @@ public class BoardEditor : MonoBehaviour
     {
         MirrorStateDouble(isNegative);
     }
+
+    public void ConvertLegacy()
+    {
+        Board board = game.GetMultiverse().GetRootBoard();
+        board.ConvertLegacy();
+    }
     public void MirrorState(int dimension_index, bool isNegativeToPositive)
     {
         Board board = game.GetMultiverse().GetRootBoard();
@@ -93,7 +99,7 @@ public class BoardEditor : MonoBehaviour
     {
         Multiverse multiverse = game.GetMultiverse();
         Board board = multiverse.GetBoardFromCoordinate(coordinate);
-        multiverse.SetPieceAt(selectedPiece + (mouseButton == 1 ? 32 : 0), coordinate);
+        multiverse.SetPieceAt(selectedPiece + (mouseButton == 1 ? Overseer.PIECE_COUNT : 0), coordinate);
     }
     void ClickWheelOnCoordinate(int[] coordinate)
     {
