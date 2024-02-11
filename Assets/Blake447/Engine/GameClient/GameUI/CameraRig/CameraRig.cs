@@ -207,14 +207,6 @@ public class CameraRig : MonoBehaviour
             CameraObject.transform.position = Vector3.MoveTowards(CameraObject.transform.position, CameraTarget.transform.position, mov_speed * Time.deltaTime);
             CameraObject.transform.rotation = Quaternion.RotateTowards(CameraObject.transform.rotation, CameraTarget.transform.rotation, rot_speed * Time.deltaTime);
         }
-        else
-        {
-            if (!hasWarned)
-            {
-                Debug.LogWarning("Camera target not assigned");
-                hasWarned = true;
-            }
-        }
     }
 
     void GetKeyInput()
