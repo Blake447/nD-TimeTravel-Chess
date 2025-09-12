@@ -17,8 +17,13 @@ public class GameSpawner : MonoBehaviour
     int SCENE_TUTORIAL = 8;
     int SCENE_EDITOR = 6;
 
-    // Start is called before the first frame update
     void Awake()
+    {
+        LoadGameMode();
+    }
+
+    // Start is called before the first frame update
+    void LoadGameMode()
     {
         menu = FindObjectOfType<PrimaryMenu>(); // find the menu system
         if (menu == null)
