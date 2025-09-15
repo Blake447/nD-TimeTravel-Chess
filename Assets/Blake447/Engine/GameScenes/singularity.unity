@@ -888,6 +888,79 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 161877353}
   m_CullTransparentMesh: 1
+--- !u!1001 &209952766
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 740663067}
+    m_Modifications:
+    - target: {fileID: 6701556228622253590, guid: e4f06d65b8f819c43bcb5648f3a46ddb, type: 3}
+      propertyPath: m_Name
+      value: CameraRig
+      objectReference: {fileID: 0}
+    - target: {fileID: 6701556228622253591, guid: e4f06d65b8f819c43bcb5648f3a46ddb, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6701556228622253591, guid: e4f06d65b8f819c43bcb5648f3a46ddb, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.7137451
+      objectReference: {fileID: 0}
+    - target: {fileID: 6701556228622253591, guid: e4f06d65b8f819c43bcb5648f3a46ddb, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.58145237
+      objectReference: {fileID: 0}
+    - target: {fileID: 6701556228622253591, guid: e4f06d65b8f819c43bcb5648f3a46ddb, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -2.1882815
+      objectReference: {fileID: 0}
+    - target: {fileID: 6701556228622253591, guid: e4f06d65b8f819c43bcb5648f3a46ddb, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6701556228622253591, guid: e4f06d65b8f819c43bcb5648f3a46ddb, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6701556228622253591, guid: e4f06d65b8f819c43bcb5648f3a46ddb, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6701556228622253591, guid: e4f06d65b8f819c43bcb5648f3a46ddb, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6701556228622253591, guid: e4f06d65b8f819c43bcb5648f3a46ddb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6701556228622253591, guid: e4f06d65b8f819c43bcb5648f3a46ddb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6701556228622253591, guid: e4f06d65b8f819c43bcb5648f3a46ddb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e4f06d65b8f819c43bcb5648f3a46ddb, type: 3}
+--- !u!114 &209952767 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6701556228622253588, guid: e4f06d65b8f819c43bcb5648f3a46ddb, type: 3}
+  m_PrefabInstance: {fileID: 209952766}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb83ddd42af5db14a8f846fca2e76485, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &209952768 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6701556228622253591, guid: e4f06d65b8f819c43bcb5648f3a46ddb, type: 3}
+  m_PrefabInstance: {fileID: 209952766}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &337203407
 GameObject:
   m_ObjectHideFlags: 0
@@ -1802,6 +1875,7 @@ MonoBehaviour:
   topToBottom: 1
   skipInactive: 1
   resetRotation: 0
+  ignoreLayoutElementSizes: 0
   childrenWidth: 1
   childrenHeight: 1
   flexSettings:
@@ -1829,11 +1903,19 @@ MonoBehaviour:
     angleFiller: 0
     elementsRotate: 1
     elementsRotationStart: 0
+  hexSettings:
+    orientation: 0
+    coordinates: 1
+    shovesOdd: 1
+    constraint: 0
+    constraintCount: 1
+    decreaseShoved: 0
   ControlWidth: 0
   ControlHeight: 0
   MaxWidth: 0
   MaxHeight: 0
   movementAnimation: 0
+  movementAnimateAll: 1
   resizeAnimation: 0
   movementCurve:
     serializedVersion: 2
@@ -1859,6 +1941,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  resizeAnimateAll: 1
   resizeCurve:
     serializedVersion: 2
     m_Curve:
@@ -2005,7 +2088,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1890439996}
-  - {fileID: 1980491061}
+  - {fileID: 209952768}
   - {fileID: 1526138049}
   - {fileID: 1027226655}
   - {fileID: 120689244}
@@ -2025,7 +2108,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   game: {fileID: 1890440001}
-  cameraRig: {fileID: 1980491062}
+  cameraRig: {fileID: 209952767}
   cursorGizmo: {fileID: 595771540}
   snapCursorGizmo: {fileID: 732794116}
   buffCursorGizmo: {fileID: 1809433225}
@@ -2864,6 +2947,7 @@ MonoBehaviour:
   topToBottom: 1
   skipInactive: 1
   resetRotation: 0
+  ignoreLayoutElementSizes: 0
   childrenWidth: 1
   childrenHeight: 1
   flexSettings:
@@ -2891,11 +2975,19 @@ MonoBehaviour:
     angleFiller: 0
     elementsRotate: 1
     elementsRotationStart: 0
+  hexSettings:
+    orientation: 0
+    coordinates: 1
+    shovesOdd: 1
+    constraint: 0
+    constraintCount: 1
+    decreaseShoved: 0
   ControlWidth: 0
   ControlHeight: 0
   MaxWidth: 0
   MaxHeight: 0
   movementAnimation: 0
+  movementAnimateAll: 1
   resizeAnimation: 0
   movementCurve:
     serializedVersion: 2
@@ -2921,6 +3013,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  resizeAnimateAll: 1
   resizeCurve:
     serializedVersion: 2
     m_Curve:
@@ -3375,6 +3468,7 @@ MonoBehaviour:
   topToBottom: 1
   skipInactive: 1
   resetRotation: 0
+  ignoreLayoutElementSizes: 0
   childrenWidth: 1
   childrenHeight: 1
   flexSettings:
@@ -3402,11 +3496,19 @@ MonoBehaviour:
     angleFiller: 0
     elementsRotate: 1
     elementsRotationStart: 0
+  hexSettings:
+    orientation: 0
+    coordinates: 1
+    shovesOdd: 1
+    constraint: 0
+    constraintCount: 1
+    decreaseShoved: 0
   ControlWidth: 0
   ControlHeight: 0
   MaxWidth: 0
   MaxHeight: 0
   movementAnimation: 0
+  movementAnimateAll: 1
   resizeAnimation: 0
   movementCurve:
     serializedVersion: 2
@@ -3432,6 +3534,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  resizeAnimateAll: 1
   resizeCurve:
     serializedVersion: 2
     m_Curve:
@@ -4397,6 +4500,7 @@ MonoBehaviour:
   topToBottom: 1
   skipInactive: 1
   resetRotation: 0
+  ignoreLayoutElementSizes: 0
   childrenWidth: 1
   childrenHeight: 1
   flexSettings:
@@ -4424,11 +4528,19 @@ MonoBehaviour:
     angleFiller: 0
     elementsRotate: 1
     elementsRotationStart: 0
+  hexSettings:
+    orientation: 0
+    coordinates: 1
+    shovesOdd: 1
+    constraint: 0
+    constraintCount: 1
+    decreaseShoved: 0
   ControlWidth: 0
   ControlHeight: 0
   MaxWidth: 0
   MaxHeight: 0
   movementAnimation: 0
+  movementAnimateAll: 1
   resizeAnimation: 0
   movementCurve:
     serializedVersion: 2
@@ -4454,6 +4566,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  resizeAnimateAll: 1
   resizeCurve:
     serializedVersion: 2
     m_Curve:
@@ -4768,6 +4881,7 @@ MonoBehaviour:
   topToBottom: 1
   skipInactive: 1
   resetRotation: 0
+  ignoreLayoutElementSizes: 0
   childrenWidth: 1
   childrenHeight: 1
   flexSettings:
@@ -4795,11 +4909,19 @@ MonoBehaviour:
     angleFiller: 0
     elementsRotate: 1
     elementsRotationStart: 0
+  hexSettings:
+    orientation: 0
+    coordinates: 1
+    shovesOdd: 1
+    constraint: 0
+    constraintCount: 1
+    decreaseShoved: 0
   ControlWidth: 0
   ControlHeight: 0
   MaxWidth: 0
   MaxHeight: 0
   movementAnimation: 0
+  movementAnimateAll: 1
   resizeAnimation: 0
   movementCurve:
     serializedVersion: 2
@@ -4825,6 +4947,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  resizeAnimateAll: 1
   resizeCurve:
     serializedVersion: 2
     m_Curve:
@@ -5227,6 +5350,7 @@ MonoBehaviour:
   topToBottom: 1
   skipInactive: 1
   resetRotation: 0
+  ignoreLayoutElementSizes: 0
   childrenWidth: 1
   childrenHeight: 1
   flexSettings:
@@ -5254,11 +5378,19 @@ MonoBehaviour:
     angleFiller: 0
     elementsRotate: 1
     elementsRotationStart: 0
+  hexSettings:
+    orientation: 0
+    coordinates: 1
+    shovesOdd: 1
+    constraint: 0
+    constraintCount: 1
+    decreaseShoved: 0
   ControlWidth: 0
   ControlHeight: 0
   MaxWidth: 0
   MaxHeight: 0
   movementAnimation: 0
+  movementAnimateAll: 1
   resizeAnimation: 0
   movementCurve:
     serializedVersion: 2
@@ -5284,6 +5416,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  resizeAnimateAll: 1
   resizeCurve:
     serializedVersion: 2
     m_Curve:
@@ -5431,22 +5564,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1966854233}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!4 &1980491061 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3221052803921634904, guid: b865aa5b4f8339b4ca3ef732e0252662, type: 3}
-  m_PrefabInstance: {fileID: 3221052805230723949}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1980491062 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3221052803921634907, guid: b865aa5b4f8339b4ca3ef732e0252662, type: 3}
-  m_PrefabInstance: {fileID: 3221052805230723949}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eb83ddd42af5db14a8f846fca2e76485, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2007676862
 GameObject:
   m_ObjectHideFlags: 0
@@ -6124,63 +6241,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2141060402}
   m_CullTransparentMesh: 1
---- !u!1001 &3221052805230723949
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 740663067}
-    m_Modifications:
-    - target: {fileID: 3221052803921634904, guid: b865aa5b4f8339b4ca3ef732e0252662, type: 3}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3221052803921634904, guid: b865aa5b4f8339b4ca3ef732e0252662, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 1.7137451
-      objectReference: {fileID: 0}
-    - target: {fileID: 3221052803921634904, guid: b865aa5b4f8339b4ca3ef732e0252662, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.58145237
-      objectReference: {fileID: 0}
-    - target: {fileID: 3221052803921634904, guid: b865aa5b4f8339b4ca3ef732e0252662, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -2.1882815
-      objectReference: {fileID: 0}
-    - target: {fileID: 3221052803921634904, guid: b865aa5b4f8339b4ca3ef732e0252662, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3221052803921634904, guid: b865aa5b4f8339b4ca3ef732e0252662, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3221052803921634904, guid: b865aa5b4f8339b4ca3ef732e0252662, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3221052803921634904, guid: b865aa5b4f8339b4ca3ef732e0252662, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3221052803921634904, guid: b865aa5b4f8339b4ca3ef732e0252662, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3221052803921634904, guid: b865aa5b4f8339b4ca3ef732e0252662, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3221052803921634904, guid: b865aa5b4f8339b4ca3ef732e0252662, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3221052803921634905, guid: b865aa5b4f8339b4ca3ef732e0252662, type: 3}
-      propertyPath: m_Name
-      value: CameraRig
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: b865aa5b4f8339b4ca3ef732e0252662, type: 3}
 --- !u!4 &4766218317166245764
 Transform:
   m_ObjectHideFlags: 0
@@ -6392,6 +6452,7 @@ MonoBehaviour:
   topToBottom: 1
   skipInactive: 1
   resetRotation: 0
+  ignoreLayoutElementSizes: 0
   childrenWidth: 1
   childrenHeight: 1
   flexSettings:
@@ -6419,11 +6480,19 @@ MonoBehaviour:
     angleFiller: 0
     elementsRotate: 1
     elementsRotationStart: 0
+  hexSettings:
+    orientation: 0
+    coordinates: 1
+    shovesOdd: 1
+    constraint: 0
+    constraintCount: 1
+    decreaseShoved: 0
   ControlWidth: 0
   ControlHeight: 0
   MaxWidth: 0
   MaxHeight: 0
   movementAnimation: 0
+  movementAnimateAll: 1
   resizeAnimation: 0
   movementCurve:
     serializedVersion: 2
@@ -6449,6 +6518,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  resizeAnimateAll: 1
   resizeCurve:
     serializedVersion: 2
     m_Curve:
@@ -6581,6 +6651,7 @@ MonoBehaviour:
   topToBottom: 1
   skipInactive: 1
   resetRotation: 0
+  ignoreLayoutElementSizes: 0
   childrenWidth: 0
   childrenHeight: 0
   flexSettings:
@@ -6608,11 +6679,19 @@ MonoBehaviour:
     angleFiller: 0
     elementsRotate: 1
     elementsRotationStart: 0
+  hexSettings:
+    orientation: 0
+    coordinates: 1
+    shovesOdd: 1
+    constraint: 0
+    constraintCount: 1
+    decreaseShoved: 0
   ControlWidth: 0
   ControlHeight: 0
   MaxWidth: 0
   MaxHeight: 0
   movementAnimation: 0
+  movementAnimateAll: 1
   resizeAnimation: 0
   movementCurve:
     serializedVersion: 2
@@ -6638,6 +6717,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  resizeAnimateAll: 1
   resizeCurve:
     serializedVersion: 2
     m_Curve:
@@ -6893,6 +6973,7 @@ MonoBehaviour:
   topToBottom: 1
   skipInactive: 1
   resetRotation: 0
+  ignoreLayoutElementSizes: 0
   childrenWidth: 1
   childrenHeight: 1
   flexSettings:
@@ -6920,11 +7001,19 @@ MonoBehaviour:
     angleFiller: 0
     elementsRotate: 1
     elementsRotationStart: 0
+  hexSettings:
+    orientation: 0
+    coordinates: 1
+    shovesOdd: 1
+    constraint: 0
+    constraintCount: 1
+    decreaseShoved: 0
   ControlWidth: 0
   ControlHeight: 0
   MaxWidth: 0
   MaxHeight: 0
   movementAnimation: 0
+  movementAnimateAll: 1
   resizeAnimation: 0
   movementCurve:
     serializedVersion: 2
@@ -6950,6 +7039,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  resizeAnimateAll: 1
   resizeCurve:
     serializedVersion: 2
     m_Curve:
@@ -7378,6 +7468,7 @@ MonoBehaviour:
   topToBottom: 1
   skipInactive: 1
   resetRotation: 0
+  ignoreLayoutElementSizes: 0
   childrenWidth: 1
   childrenHeight: 1
   flexSettings:
@@ -7405,11 +7496,19 @@ MonoBehaviour:
     angleFiller: 0
     elementsRotate: 1
     elementsRotationStart: 0
+  hexSettings:
+    orientation: 0
+    coordinates: 1
+    shovesOdd: 1
+    constraint: 0
+    constraintCount: 1
+    decreaseShoved: 0
   ControlWidth: 0
   ControlHeight: 0
   MaxWidth: 0
   MaxHeight: 0
   movementAnimation: 0
+  movementAnimateAll: 1
   resizeAnimation: 0
   movementCurve:
     serializedVersion: 2
@@ -7435,6 +7534,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  resizeAnimateAll: 1
   resizeCurve:
     serializedVersion: 2
     m_Curve:
@@ -7768,18 +7868,24 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   Owner: {fileID: 4867558495359830493}
-  ComboboxInstance: 0
+  ComboboxOwner: {fileID: 0}
   DisableRecycling: 0
   IsDragged: 0
   SelectableObjects: []
-  GraphicsBackgroundVersion: 1
-  GraphicsForegroundVersion: 1
+  GraphicsBackgroundVersion: 2
+  GraphicsForegroundVersion: 2
+  GraphicsForegroundTMProFix: 0
   Foreground:
+  - {fileID: 4867558493675334256}
+  foregrounds:
   - {fileID: 4867558493675334256}
   graphicsBackground:
   - {fileID: 4867558494515008101}
-  CellsBackgroundVersion: 0
+  backgrounds:
+  - {fileID: 4867558494515008101}
   cellsGraphicsBackground: []
+  cellsBackgrounds: []
+  CellsBackgroundVersion: 0
   LocalPositionZReset: 0
   Text: {fileID: 4867558493675334255}
 --- !u!114 &4867558494515008103
@@ -7796,19 +7902,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AllowDrag: 1
   Cursors: {fileID: 0}
-  AllowDropCursor: {fileID: 2800000, guid: 2b808f7c3d6a24b4885fde391543fe58, type: 3}
-  AllowDropCursorHotSpot: {x: 4, y: 2}
-  DeniedDropCursor: {fileID: 2800000, guid: 7200c69591c3f4144ac09f5347b5e18d, type: 3}
-  DeniedDropCursorHotSpot: {x: 4, y: 2}
-  DefaultCursorTexture: {fileID: 0}
-  DefaultCursorHotSpot: {x: 0, y: 0}
   handle: {fileID: 0}
+  EventSystemSelect: 1
+  DragButton: 0
+  DragDelay: 0
+  RedirectDragToScrollRect: 0
+  UnscaledTime: 1
   StartDragEvent:
     m_PersistentCalls:
       m_Calls: []
   EndDragEvent:
     m_PersistentCalls:
       m_Calls: []
+  AllowDropCursor: {fileID: 2800000, guid: 2b808f7c3d6a24b4885fde391543fe58, type: 3}
+  AllowDropCursorHotSpot: {x: 4, y: 2}
+  DeniedDropCursor: {fileID: 2800000, guid: 7200c69591c3f4144ac09f5347b5e18d, type: 3}
+  DeniedDropCursorHotSpot: {x: 4, y: 2}
+  DefaultCursorTexture: {fileID: 0}
+  DefaultCursorHotSpot: {x: 0, y: 0}
   ListView: {fileID: 4867558495359830493}
   DragInfo: {fileID: 0}
   DragInfoOffset: {x: -5, y: 5, z: 0}
@@ -8260,13 +8371,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfe642d4ddb9b6047999c01b38a55a84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  interactable: 1
   instances: []
   DestroyGameObjects: 1
   multipleSelect: 0
+  MultipleSelectRequireKeys: 0
   selectedIndex: -1
   RangeMode: 1
+  allowColoring: 1
   StyleTable: 0
+  coloringStriped: 0
+  defaultBackgroundColor: {r: 1, g: 1, b: 1, a: 0}
+  defaultColor: {r: 1, g: 0.84313726, b: 0.4509804, a: 1}
+  highlightedBackgroundColor: {r: 0.70980394, g: 0.47843137, b: 0.14117648, a: 1}
+  highlightedColor: {r: 0, g: 0, b: 0, a: 1}
+  selectedBackgroundColor: {r: 0.76862746, g: 0.6117647, b: 0.15294118, a: 1}
+  selectedColor: {r: 0, g: 0, b: 0, a: 1}
+  defaultEvenBackgroundColor: {r: 1, g: 1, b: 1, a: 1}
+  defaultOddBackgroundColor: {r: 1, g: 1, b: 1, a: 1}
+  FadeDuration: 0
   Navigation: 1
+  LoopedNavigation: 1
+  RequireVisible: 1
+  StretchToMaxItemSize: 0
+  KeepScrollAtBottom: 0
   OnSelect:
     m_PersistentCalls:
       m_Calls: []
@@ -8367,7 +8495,6 @@ MonoBehaviour:
   OnlyOneHighlighted: 0
   FixHighlightItemUnderPointer: 1
   disabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
-  interactable: 1
   virtualization: 1
   reversedOrder: 0
   listType: 0
@@ -8376,14 +8503,6 @@ MonoBehaviour:
   sort: 1
   disableScrollRect: 0
   LimitScrollValue: 0
-  allowColoring: 1
-  defaultBackgroundColor: {r: 1, g: 1, b: 1, a: 0}
-  defaultColor: {r: 1, g: 0.84313726, b: 0.4509804, a: 1}
-  highlightedBackgroundColor: {r: 0.70980394, g: 0.47843137, b: 0.14117648, a: 1}
-  highlightedColor: {r: 0, g: 0, b: 0, a: 1}
-  selectedBackgroundColor: {r: 0.76862746, g: 0.6117647, b: 0.15294118, a: 1}
-  selectedColor: {r: 0, g: 0, b: 0, a: 1}
-  FadeDuration: 0
   scrollRect: {fileID: 4867558495256931958}
   direction: 1
   setContentSizeFitter: 1
@@ -8412,18 +8531,27 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  centerTheItems: 0
+  alignCenter: 0
   loopedList: 0
   PrecalculateItemSizes: 1
   header: {fileID: 0}
   AutoScrollArea: 40
   AutoScrollSpeed: 200
   customItems: []
+  OnItemSelected:
+    m_PersistentCalls:
+      m_Calls: []
+  OnItemDeselected:
+    m_PersistentCalls:
+      m_Calls: []
   defaultItem: {fileID: 4867558494515008102}
   Instances: []
   OwnTemplates: []
   SharedTemplates: []
   InstancesDisplayedIndices: 
+  OnDataSourceChanged:
+    m_PersistentCalls:
+      m_Calls: []
   scrollInertiaUntilItemCenter: 0
   ScrollInertia:
     serializedVersion: 2
@@ -8449,6 +8577,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  RetainScrollPosition: 0
   KeepSelection: 1
   OnStartScrolling:
     m_PersistentCalls:
