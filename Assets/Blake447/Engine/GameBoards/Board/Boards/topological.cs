@@ -247,34 +247,34 @@ public class topological : Board
         }
         return 0;
     }
-    public override void SetEnpassantFlag(int[] coordinate)
-    {
-        if (coordinate != null)
-        {
-            if (IsInBounds(coordinate))
-            {
-                int index = CoordinateToIndex(coordinate);
-                enpassant[index] = true;
-            }
-        }
-    }
-    public override void ClearEnpassantFlags()
-    {
-        for (int i = 0; i < enpassant.Length; i++)
-            enpassant[i] = false;
-    }
-    public override bool GetEnPassantFlag(int[] coordinate)
-    {
-        if (coordinate != null)
-        {
-            if (IsInBounds(coordinate))
-            { 
-                int index = CoordinateToIndex(coordinate);
-                return enpassant[index];
-            }
-        }
-        return false;
-    }
+    //public override void SetEnpassantFlag(int[] coordinate)
+    //{
+    //    if (coordinate != null)
+    //    {
+    //        if (IsInBounds(coordinate))
+    //        {
+    //            int index = CoordinateToIndex(coordinate);
+    //            enpassant[index] = true;
+    //        }
+    //    }
+    //}
+    //public override void ClearEnpassantFlags()
+    //{
+    //    for (int i = 0; i < enpassant.Length; i++)
+    //        enpassant[i] = false;
+    //}
+    //public override bool GetEnPassantFlag(int[] coordinate)
+    //{
+    //    if (coordinate != null)
+    //    {
+    //        if (IsInBounds(coordinate))
+    //        { 
+    //            int index = CoordinateToIndex(coordinate);
+    //            return enpassant[index];
+    //        }
+    //    }
+    //    return false;
+    //}
     public override void IncrementChangeCounter(int[] coordinate)
     {
         if (IsInBounds(coordinate))
@@ -471,7 +471,7 @@ public class topological : Board
         pieces = new int[length];
         flags = new int[length];
         changes = new int[length];
-        enpassant = new bool[length];
+        //enpassant = new bool[length];
     }
     public override void PopulateState(int[] piece_array)
     {

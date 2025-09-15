@@ -421,18 +421,20 @@ public class MVTime : Multiverse
 
     MVNode Node(MVNode source, int m, int t)
     {
-        MVNode node = Instantiate(TemplateNode);
+        MVNode node = Instantiate(source);
         node.m = m;
         node.t = t;
         node.name = "Node-" + Tuple(node.m, node.t);
         node.GetBoard().name = "Board-" + Tuple(node.m, node.t);
-        node.GetBoard().InitializeBoard(pallete, state, isPhysical);
-        int[] source_state = (int[])source.GetBoard().RequestState().Clone();
-        int[] source_changes = (int[])source.GetBoard().RequestChanges().Clone();
-        bool[] source_enpassant = (bool[])source.GetBoard().RequestEnPassant().Clone();
-        node.GetBoard().TransferState(source_state, source_changes, source_enpassant);
+        //node.GetBoard().InitializeBoard(pallete, state, isPhysical);
+        //int[] source_state = (int[])source.GetBoard().RequestState();
+        //int[] source_changes = (int[])source.GetBoard().RequestChanges();
+        //bool[] source_enpassant = (bool[])source.GetBoard().RequestEnPassant();
+        //node.GetBoard().TransferState(source_state, source_changes, source_enpassant);
+        node.GetBoard().ClearEnpassant();
+        node.GetBoard().SetAllMeshDisplays();
         node.transform.parent = NodeRoot.transform;
-        node.transform.localPosition = node.transform.localPosition + MTPosition(m, t);
+        node.transform.localPosition = TemplateNode.transform.position + -TemplateNode.transform.TransformVector(NodeRoot.transform.position) + MTPosition(m, t);
         return node;
     }
     MVNode Node(int m, int t)

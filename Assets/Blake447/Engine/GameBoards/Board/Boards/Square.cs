@@ -10,10 +10,14 @@ public class Square : MonoBehaviour
     [SerializeField]
     MeshFilter meshFilter;
 
-    MaterialPropertyBlock white_block;
-    MaterialPropertyBlock black_block;
+	[SerializeField]
+	MaterialPropertyBlock white_block;
+
+	[SerializeField]
+	MaterialPropertyBlock black_block;
     //PieceMeshes piece_meshes = null;
-    PiecePallete pallete;
+    [SerializeField]
+	PiecePallete pallete;
 
     public void InitializeSquare(PiecePallete pallete)
     {

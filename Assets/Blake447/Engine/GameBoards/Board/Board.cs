@@ -4,22 +4,22 @@ using UnityEngine;
 
 public class Board : MonoBehaviour
 {
-    protected bool isPhysical;
+	[SerializeField] protected bool isPhysical;
     [SerializeField] protected PiecePallete pallete;
-    protected bool isInitialized;
-    protected int[] pieces;
-    protected int[] flags;
-    protected int[] changes;
-    protected bool[] enpassant;
-    protected Square[] squares;
-    protected GameObject[] visualizers;
+	[SerializeField] protected bool isInitialized;
+    [SerializeField] protected int[] pieces;
+	[SerializeField] protected int[] flags;
+	[SerializeField] protected int[] changes;
+	//[SerializeField] protected bool[] enpassant;
+	[SerializeField] protected Square[] squares;
+	[SerializeField] protected GameObject[] visualizers;
     [SerializeField] protected Square TemplateSquare;
     [SerializeField] protected GameObject SquaresRoot;
-    protected float[] mvtime_offsets = new float[] { 40.0f, 40.0f };
+	[SerializeField] protected float[] mvtime_offsets = new float[] { 40.0f, 40.0f };
     [SerializeField] protected GameObject VisualizerTemplate;
     [SerializeField] protected GameObject VisualizerRoot;
     [SerializeField] protected int[] dimensions = new int[] {8, 16};
-    int[] previous_state;
+	[SerializeField] int[] previous_state;
 
     public void ConvertLegacy()
     {
@@ -114,7 +114,7 @@ public class Board : MonoBehaviour
         pieces = new int[length];
         flags = new int[length];
         changes = new int[length];
-        enpassant = new bool[length];
+        //enpassant = new bool[length];
     }
     public virtual void GenerateSquareArrays(PiecePallete pallete)
     {
@@ -175,12 +175,26 @@ public class Board : MonoBehaviour
     #region Getters and Setters
     public virtual void TransferState(int[] state, int[] changes, bool[] enpassant)
     {
+        if (this.pieces == null)
+        {
+            this.pieces = new int[state.Length];
+        }
+        if (this.changes == null)
+        {
+            this.changes = new int[changes.Length];
+        }
+        //if (this.enpassant == null)
+        //{
+        //    this.enpassant = new bool[enpassant.Length];
+        //}
+
+
         for (int i = 0; i < Mathf.Min(state.Length, pieces.Length); i++)
         {
             pieces[i] = state[i];
             if (pieces[i] % Overseer.PIECE_COUNT == 30) pieces[i] = 0;
             this.changes[i] = changes[i];
-            this.enpassant[i] = enpassant[i];
+            //this.enpassant[i] = enpassant[i];
         }
         if (isPhysical)
             SetAllMeshDisplays();
@@ -193,10 +207,10 @@ public class Board : MonoBehaviour
     {
         return (int[])changes.Clone();
     }
-    public virtual bool[] RequestEnPassant()
-    {
-        return (bool[])enpassant.Clone();
-    }
+    //public virtual bool[] RequestEnPassant()
+    //{
+    //    return (bool[])enpassant.Clone();
+    //}
     public void ClearGhostPawns()
     {
         int pieceCount = GetPieceCount();
@@ -249,34 +263,44 @@ public class Board : MonoBehaviour
         }
         return -1;
     }
-    public virtual void SetEnpassantFlag(int[] coordinate)
+    //public virtual void SetEnpassantFlag(int[] coordinate)
+    //{
+    //    if (coordinate != null)
+    //    {
+    //        if (IsInBounds(coordinate))
+    //        {
+    //            int index = CoordinateToIndex(coordinate);
+    //            enpassant[index] = true;
+    //        }
+    //    }
+    //}
+    //public virtual void ClearEnpassantFlags()
+    //{
+    //    for (int i = 0; i < enpassant.Length; i++)
+    //        enpassant[i] = false;
+    //}
+    public void ClearEnpassant()
     {
-        if (coordinate != null)
+        for (int i= 0; i < pieces.Length; i++)
         {
-            if (IsInBounds(coordinate))
+            if (pieces[i] % Overseer.PIECE_COUNT == 30)
             {
-                int index = CoordinateToIndex(coordinate);
-                enpassant[index] = true;
+                pieces[i] = 0;
             }
         }
     }
-    public virtual void ClearEnpassantFlags()
-    {
-        for (int i = 0; i < enpassant.Length; i++)
-            enpassant[i] = false;
-    }
-    public virtual bool GetEnPassantFlag(int[] coordinate)
-    {
-        if (coordinate != null)
-        {
-            if (IsInBounds(coordinate))
-            {
-                int index = CoordinateToIndex(coordinate);
-                return enpassant[index];
-            }
-        }
-        return false;
-    }
+    //public virtual bool GetEnPassantFlag(int[] coordinate)
+    //{
+    //    if (coordinate != null)
+    //    {
+    //        if (IsInBounds(coordinate))
+    //        {
+    //            int index = CoordinateToIndex(coordinate);
+    //            return enpassant[index];
+    //        }
+    //    }
+    //    return false;
+    //}
     public virtual void FlagSquare(int[] coordinate)
     {
         int index = CoordinateToIndex(coordinate);
