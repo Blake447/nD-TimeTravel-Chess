@@ -397,13 +397,13 @@ public class GameInstance : MonoBehaviour
     #region Events
     public void OnGameStart()
     {
-        if (player_types[current_players_turn] == PLAYER_AI)
-            ai.StartAISearch(current_players_turn);
+        //if (player_types[current_players_turn] == PLAYER_AI)
+        //    ai.StartAISearch(current_players_turn);
     }
     public void OnTurnSubmitted()
     {
-        if (player_types[current_players_turn] == PLAYER_AI)
-            ai.StartAISearch(current_players_turn);
+        //if (player_types[current_players_turn] == PLAYER_AI)
+        //    ai.StartAISearch(current_players_turn);
     }
     #endregion
 
