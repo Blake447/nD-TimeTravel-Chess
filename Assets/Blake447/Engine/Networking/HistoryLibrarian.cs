@@ -11,6 +11,9 @@ public class HistoryLibrarian : MonoBehaviour
     //public History[] histories;
     private PhotonView photonView;
     History proxyHistory;
+
+    
+
     private void Awake()
     {
         photonView = GetComponent<PhotonView>();
@@ -21,8 +24,41 @@ public class HistoryLibrarian : MonoBehaviour
         this.game = game;
         game.SetPlayerLocalID(PhotonNetwork.LocalPlayer.GetHashCode());
     }
+    public void RequestGameBoard()
+    {
+        photonView.RPC(nameof(RPC_RequestGameBoard), RpcTarget.MasterClient, new object[] { });
+		Debug.Log("RequestGameBoard()");
+	}
+	[PunRPC]
+    void RPC_RequestGameBoard()
+    {
+        if (GameSetupMenu.instance.isBoardSpawned)
+        {
+            int boardIndex = GameSetupMenu.instance.selectedBoard;
+            BoardLayout layout = GameSetupMenu.instance.selectedLayout;
+            GameSettings settings = GameSetupMenu.instance.settings;
 
-    public void RequestGameState()
+            SendGameBoard(boardIndex, layout, settings);
+        }
+        Debug.Log("RPC_RequestGameBoard()");
+    }
+    public void SendGameBoard(int boardIndex, BoardLayout layout, GameSettings settings)
+    {
+        Debug.Log("SendGameBoard(" + boardIndex + ", " + layout + ", " + settings + ")");
+		photonView.RPC(nameof(RPC_SendGameBoard), RpcTarget.Others, new object[] { boardIndex, layout, settings });
+    }
+	[PunRPC]
+    void RPC_SendGameBoard(int boardIndex, BoardLayout layout, GameSettings settings)
+    {
+        Debug.Log("RPC_SendGameBoard(" + boardIndex + ", " + layout + ", " + settings + ")");
+        //BoardLayout layout = GameSetupMenu.instance.selectedLayout;
+
+        Debug.Log(GameSetupMenu.instance);
+        GameSetupMenu.instance.CreateBoardLocally(boardIndex, layout, settings);
+        RequestGameState();
+    }
+
+	public void RequestGameState()
     {
         photonView.RPC(nameof(RPC_RequestGameState), RpcTarget.MasterClient, new object[] { });
     }

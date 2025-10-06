@@ -22,6 +22,9 @@ public class BoardEditor : MonoBehaviour
     public TMPro.TMP_InputField inputField;
     public TMPro.TMP_InputField fenField;
 
+    public Board currentBoard;
+    public BoardLayout boardLayout;
+
     public void SubmitTurn()
     {
         game.SubmitTurn();
@@ -58,12 +61,41 @@ public class BoardEditor : MonoBehaviour
 
     public void SaveGameState()
     {
-        string name = inputField.text;
+        int[] forwards = (int[])game.forwards.Clone();
+        int[] laterals = (int[])game.laterals.Clone();
+        bool[] layoutForwards = new bool[forwards.Length];
+		bool[] layoutLaterals = new bool[laterals.Length];
+        for (int i = 0; i < forwards.Length; i++)
+        {
+            layoutForwards[i] = forwards[i] == 1;
+        }
+        for (int i = 0; i < laterals.Length; i++)
+        {
+            layoutLaterals[i] = laterals[i] == 1;
+        }
+        BoardLayout layout = new BoardLayout();
+        layout.displayName = inputField.text;
+        if (layout.displayName == "")
+        {
+            layout.displayName = "unnamed";
+        }
+        layout.boardName = game.GetMultiverse().GetTemplateNode().displayName;
+        layout.dimensions = (int[])game.GetRuleSet().local_dimensions.Clone();
+        layout.state = (int[])game.GetMultiverse().GetRootBoard().RequestState().Clone();
+        layout.forwards = (bool[])layoutForwards.Clone();
+        layout.laterals = (bool[])layoutLaterals.Clone();
+        BoardLoader.SaveLayout(layout);
+
+		string name = inputField.text;
         int[] dimensions = (int[])game.GetRuleSet().local_dimensions.Clone();
         int[] boardState = (int[])game.GetMultiverse().GetRootBoard().RequestState().Clone();
         BoardState state = new BoardState(name, dimensions, boardState, null);
         BoardLoader.SaveCustomBoardState(state);
     }
+
+    
+
+
     public void LoadGameState()
     {
         string name = inputField.text;
@@ -218,18 +250,26 @@ public class BoardEditor : MonoBehaviour
                 button.transform.localScale = Vector3.one;
                 button.SetChessPiece(piece, i);
             }
-       
-            
-
         }
-        //if (game != null)
-        //{
-        //    for (int i = 0; i < playerSlots.Length; i++)
-        //        playerSlots[i].BindToGame(game, i);
-        //    foreach (ButtonRelay br in buttonRelays)
-        //        br.BindButtonToGameStatus(game);
-        //}
-        ClearBuffer();
+        MVNode mvNode = game.GetComponentInChildren<MVNode>();
+        Board board = mvNode.board;
+  //      boardLayout = GetComponentInChildren<BoardLayout>();
+		//if (boardLayout != null && board != null)
+		//{
+  //          boardLayout.displayName = "default";
+  //          boardLayout.boardName = mvNode.displayName;
+		//	boardLayout.board = board;
+		//	boardLayout.dimensions = board.GetBoardSize();
+  //          boardLayout.state = board.RequestState();
+		//}
+		//if (game != null)
+		//{
+		//    for (int i = 0; i < playerSlots.Length; i++)
+		//        playerSlots[i].BindToGame(game, i);
+		//    foreach (ButtonRelay br in buttonRelays)
+		//        br.BindButtonToGameStatus(game);
+		//}
+		ClearBuffer();
         
 
 

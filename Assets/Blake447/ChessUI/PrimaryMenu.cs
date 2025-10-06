@@ -2,9 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+
+// OBSOLETE
+
 public class PrimaryMenu : MonoBehaviour
 {
-    public UIWidgets.Custom.DataTypeGameModeNS.ListViewDataTypeGameMode gamemodeList;
+    //public UIWidgets.Custom.DataTypeGameModeNS.ListViewDataTypeGameMode gamemodeList;
     public GameObject persistant;
     public GameObject toggled;
     public GameObject MainMenu;
@@ -46,28 +49,28 @@ public class PrimaryMenu : MonoBehaviour
         Screen.orientation = ScreenOrientation.LandscapeLeft;
 #endif
         // Construct singleton menu
-        if (menu == null)
-        {
-            DontDestroyOnLoad(this.gameObject);
-            menu = this;
-        }
-        else
-            Destroy(this.gameObject);
+        //if (menu == null)
+        //{
+        //    DontDestroyOnLoad(this.gameObject);
+        //    menu = this;
+        //}
+        //else
+        //    Destroy(this.gameObject);
 
-        // Populate menu list with gamedata of assigned game descriptors
-        foreach (GameDescriptor gamemode in GameDescriptors)
-        {
-            DataTypeGameMode gamedata = new DataTypeGameMode();
-            int dimensions = gamemode.dimensions.Length;
-            if (gamemode.isTimeTravel)
-                dimensions -= 2;
-            gamedata.dimensions = dimensions + "D" + (gamemode.isTimeTravel ? " + MT" : "");
-            gamedata.GameType = gamemode.game_name;
-            gamedata.type = "chess";
-            gamedata.multiverse = gamemode.isTimeTravel ? "MV Time" : "Singularity";
-            gamedata.players = 2;
-            gamemodeList.Add(gamedata);
-        }
+        //// Populate menu list with gamedata of assigned game descriptors
+        //foreach (GameDescriptor gamemode in GameDescriptors)
+        //{
+        //    DataTypeGameMode gamedata = new DataTypeGameMode();
+        //    int dimensions = gamemode.dimensions.Length;
+        //    if (gamemode.isTimeTravel)
+        //        dimensions -= 2;
+        //    gamedata.dimensions = dimensions + "D" + (gamemode.isTimeTravel ? " + MT" : "");
+        //    gamedata.GameType = gamemode.game_name;
+        //    gamedata.type = "chess";
+        //    gamedata.multiverse = gamemode.isTimeTravel ? "MV Time" : "Singularity";
+        //    gamedata.players = 2;
+        //    gamemodeList.Add(gamedata);
+        //}
     }
     // Toggle the menu
     public void ToggleMenu()
@@ -174,53 +177,53 @@ public class PrimaryMenu : MonoBehaviour
         useForwardLateralSelected = userForwardLateral;
     }
     // Get and set selected game mode
-    public void SetSelectedGameMode(int gamemode, UIWidgets.ListViewItem item)
+    public void SetSelectedGameMode(int gamemode)//, UIWidgets.ListViewItem item)
     {
-        selectedGameMode = gamemode;
-        if (widgetController != null)
-        {
-            widgetController.gameObject.SetActive(true);
-            widgetController.SetBoard(GetPrefab(gamemode).board.gameObject);
-        }
-        if (multiverseWidgetController != null)
-        {
-            multiverseWidgetController.gameObject.SetActive(true);
-            if (GameDescriptors[gamemode].isTimeTravel)
-            {
-                multiverseWidgetController.SetBoard(multiverse_model_MVTime);
-            }
-            else
-            {
-                multiverseWidgetController.SetBoard(multiverse_model_singularity);
-            }
+        //selectedGameMode = gamemode;
+        //if (widgetController != null)
+        //{
+        //    widgetController.gameObject.SetActive(true);
+        //    widgetController.SetBoard(GetPrefab(gamemode).board.gameObject);
+        //}
+        //if (multiverseWidgetController != null)
+        //{
+        //    multiverseWidgetController.gameObject.SetActive(true);
+        //    if (GameDescriptors[gamemode].isTimeTravel)
+        //    {
+        //        multiverseWidgetController.SetBoard(multiverse_model_MVTime);
+        //    }
+        //    else
+        //    {
+        //        multiverseWidgetController.SetBoard(multiverse_model_singularity);
+        //    }
 
 
-        }
-        for (int i = 1; i < 5; i++)
-        {
-            GameObject textRoot = GameInfoRoot.transform.GetChild(i).gameObject;
-            GameObject text = textRoot.transform.GetChild(0).gameObject;
-            UIWidgets.Custom.DataTypeGameModeNS.ListViewComponentDataTypeGameMode gameData = gamemodeList.GetItemInstance(gamemode);
-            TMPro.TMP_Text tmp_text = text.GetComponent<TMPro.TMP_Text>();
-            switch(i)
-            {
-                case 1:
-                    tmp_text.text = gameData.type.text;
-                    break;
-                case 2:
-                    tmp_text.text = gameData.multiverse.text;
-                    break;
-                case 3:
-                    tmp_text.text = gameData.dimensions.text;
-                    break;
-                case 4:
-                    UnityEngine.UI.Toggle toggle = text.GetComponent<UnityEngine.UI.Toggle>();
-                    toggle.isOn = !GameDescriptors[gamemode].useForwardLateral; 
-                    break;
-                default:
-                    break;
-            }
-        }
+        //}
+        //for (int i = 1; i < 5; i++)
+        //{
+        //    GameObject textRoot = GameInfoRoot.transform.GetChild(i).gameObject;
+        //    GameObject text = textRoot.transform.GetChild(0).gameObject;
+        //    UIWidgets.Custom.DataTypeGameModeNS.ListViewComponentDataTypeGameMode gameData = gamemodeList.GetItemInstance(gamemode);
+        //    TMPro.TMP_Text tmp_text = text.GetComponent<TMPro.TMP_Text>();
+        //    switch(i)
+        //    {
+        //        case 1:
+        //            tmp_text.text = gameData.type.text;
+        //            break;
+        //        case 2:
+        //            tmp_text.text = gameData.multiverse.text;
+        //            break;
+        //        case 3:
+        //            tmp_text.text = gameData.dimensions.text;
+        //            break;
+        //        case 4:
+        //            UnityEngine.UI.Toggle toggle = text.GetComponent<UnityEngine.UI.Toggle>();
+        //            toggle.isOn = !GameDescriptors[gamemode].useForwardLateral; 
+        //            break;
+        //        default:
+        //            break;
+        //    }
+        //}
     }
     public int GetSelectedGameMode()
     {

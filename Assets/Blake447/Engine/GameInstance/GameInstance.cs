@@ -63,6 +63,8 @@ public class GameInstance : MonoBehaviour
     int local_client_id = 0;
     int[] lastPlayerClicked = new int[2] { -1, -1 };
 
+    public int[] forwards;
+    public int[] laterals;
 
     public ToggleArray accordion_white;
     public ToggleArray accordion_black;
@@ -641,7 +643,9 @@ public class GameInstance : MonoBehaviour
         ruleSet.time_index = gameDescriptor.timeIndex;
         multiverse.SetTemplateNode(gameDescriptor.board);
 
-        boardState = BoardLoader.LoadCustomBoardState(filename);
+        //boardState = BoardLoader.LoadCustomBoardState(filename);
+        boardState = new BoardState("default", ruleSet.local_dimensions, (int[])gameDescriptor.board_state.Clone(), null);
+        
         int piece_count = 1;
         for (int i = 0; i < ruleSet.local_dimensions.Length; i++)
             piece_count *= ruleSet.local_dimensions[i];
@@ -652,7 +656,10 @@ public class GameInstance : MonoBehaviour
         ruleSet.InitializeRuleSet(pallete);
         historian.InitializeHistorian(this);
 
-        Debug.Log("Initialize Game");
+        this.forwards = (int[])gameDescriptor.forwards.Clone();
+		this.laterals = (int[])gameDescriptor.laterals.Clone();
+
+		Debug.Log("Initialize Game");
 
         int max_players = 2;
 
@@ -664,6 +671,8 @@ public class GameInstance : MonoBehaviour
         }
 
         Board board = multiverse.GetTemplateNode().board;
+        board.SetDimensions();
+        
         player_names = new string[max_players];
         player_types = new int[max_players];
         players_joined = new int[max_players];

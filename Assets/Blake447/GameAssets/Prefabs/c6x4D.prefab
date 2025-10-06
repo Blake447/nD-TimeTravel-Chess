@@ -640,6 +640,9 @@ MonoBehaviour:
   pallete: {fileID: 0}
   TemplateSquare: {fileID: 5836053768471333825}
   SquaresRoot: {fileID: 5836053768061347081}
+  mvtime_offsets:
+  - 60
+  - 40
   VisualizerTemplate: {fileID: 5836053768662456632}
   VisualizerRoot: {fileID: 5836053767827065027}
   dimensions: 06000000060000000600000006000000
@@ -1207,6 +1210,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db69ddd8a64dfd84da9d9c0231572f12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  displayName: 4D 6x6
+  filenames: []
   next: {fileID: 0}
   board: {fileID: 6659903131006283668}
   m: 0

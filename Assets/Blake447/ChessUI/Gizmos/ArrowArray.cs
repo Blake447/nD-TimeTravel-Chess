@@ -14,6 +14,7 @@ public class ArrowArray : MonoBehaviour
         {
             ArrowList = new StraightArrow[1];
             ArrowList[0] = Instantiate(TemplateArrow);
+            ArrowList[0].transform.parent = UniversalLoader.instance.GameRoot.transform;
             ArrowList[0].SetArrow(start, end);
         }
         else
@@ -21,7 +22,8 @@ public class ArrowArray : MonoBehaviour
             StraightArrow[] NewArrowList = new StraightArrow[ArrowList.Length + 1];
             System.Array.Copy(ArrowList, 0, NewArrowList, 0, ArrowList.Length);
             NewArrowList[NewArrowList.Length - 1] = Instantiate(TemplateArrow);
-            NewArrowList[NewArrowList.Length - 1].SetArrow(start, end);
+			NewArrowList[NewArrowList.Length - 1].transform.parent = UniversalLoader.instance.GameRoot.transform;
+			NewArrowList[NewArrowList.Length - 1].SetArrow(start, end);
             ArrowList = NewArrowList;
         }
     }

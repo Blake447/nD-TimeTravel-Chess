@@ -7,6 +7,8 @@ public class Western : PiecePallete
     
     public override void DefinePieces(int[] dimensions, PalleteOptions options, int[] forwards=null, int[] laterals=null)
     {
+        
+
         bool useForwardLateralExclusion = options.useForwardLateral;
         bool isMultiverseTimeTravel = options.isMultiverseTimeTravel;
         bool allowPromotions = options.allowPromotion;

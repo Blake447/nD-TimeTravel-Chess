@@ -446,6 +446,7 @@ public class nChessPiece
             buffer[0] = (int[])promotionDistance.Clone();
         }
         this.promotionDistance = buffer;
+        Debug.Log("Promotion Distance: " + Coordinates.CoordinateToString(promotionDistance));
 
         if (this.promotionPiece != null)
         {

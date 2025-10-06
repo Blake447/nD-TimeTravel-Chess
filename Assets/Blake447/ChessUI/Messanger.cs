@@ -17,9 +17,13 @@ public class Messanger : MonoBehaviour
 
     public static void DisplayMessage(string message)
     {
-        singleton.output.gameObject.SetActive(true);
-        singleton.output.text = message;
-        singleton.StartCoroutine(singleton.FadeMessage());
+        if (singleton != null)
+        {
+            singleton.output.gameObject.SetActive(true);
+            singleton.output.text = message;
+            singleton.StartCoroutine(singleton.FadeMessage());
+
+        }
     }
     IEnumerator FadeMessage()
     {

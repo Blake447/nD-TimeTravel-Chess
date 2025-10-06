@@ -14,7 +14,17 @@ public class Coordinates : MonoBehaviour
         coordstring = coordstring + ( coord.Length > 1 ? (coord[coord.Length - 1] + ")") : ")") ;
         return coordstring;
     }
-    public static bool Equal(int[] a, int[] b)
+	public static string CoordinateToString(bool[] coord)
+	{
+		if (coord == null)
+			return "()";
+		string coordstring = "(";
+		for (int i = 0; i < coord.Length - 1; i++)
+			coordstring = coordstring + coord[i] + ", ";
+		coordstring = coordstring + (coord.Length > 1 ? (coord[coord.Length - 1] + ")") : ")");
+		return coordstring;
+	}
+	public static bool Equal(int[] a, int[] b)
     {
         if (a.Length != b.Length)
             return false;

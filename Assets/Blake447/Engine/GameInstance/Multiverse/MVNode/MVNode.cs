@@ -4,14 +4,15 @@ using UnityEngine;
 
 public class MVNode : MonoBehaviour
 {
+    public string displayName = "default";
+    public string[] filenames = null;
+
+
     public MVNode next;
     //public MVNode prev;
     //public MVNode mvup;
     //public MVNode mvdw;
     public Board board;
-
-
-
 
     public int m;
     public int t;

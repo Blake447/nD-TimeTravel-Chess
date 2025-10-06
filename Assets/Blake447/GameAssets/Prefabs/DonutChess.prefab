@@ -329,6 +329,9 @@ MonoBehaviour:
   pallete: {fileID: 0}
   TemplateSquare: {fileID: 8822849474140952716}
   SquaresRoot: {fileID: 8822849472655128132}
+  mvtime_offsets:
+  - 15
+  - 15
   VisualizerTemplate: {fileID: 8822849474327808629}
   VisualizerRoot: {fileID: 8822849472486710158}
   dimensions: 0800000010000000
@@ -881,6 +884,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db69ddd8a64dfd84da9d9c0231572f12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  displayName: Donut
+  filenames: []
   next: {fileID: 0}
   board: {fileID: 8822849472516325643}
   m: 0

@@ -707,6 +707,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db69ddd8a64dfd84da9d9c0231572f12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  displayName: xkcd nD
+  filenames: []
   next: {fileID: 0}
   board: {fileID: 672263110424457069}
   m: 0
@@ -1169,9 +1171,12 @@ MonoBehaviour:
   pallete: {fileID: 0}
   TemplateSquare: {fileID: 7495773443653985339}
   SquaresRoot: {fileID: 7495773445125130995}
+  mvtime_offsets:
+  - 20
+  - 100
   VisualizerTemplate: {fileID: 7495773443441931970}
   VisualizerRoot: {fileID: 7495773445359445817}
-  dimensions: 0800000010000000
+  dimensions: 0400000004000000040000000400000004000000
 --- !u!1 &7495773445359445817
 GameObject:
   m_ObjectHideFlags: 0

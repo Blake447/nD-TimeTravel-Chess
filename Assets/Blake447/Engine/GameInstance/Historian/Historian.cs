@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+
+
+
+
 public class Historian : MonoBehaviour
 {
     //[SerializeField]
@@ -75,7 +79,7 @@ public class Historian : MonoBehaviour
     //}
 
 
-    public UIWidgets.ListViewString listViewString;
+    //public UIWidgets.ListViewString listViewString;
     public void OnGameStateChanged(int[] players_joined, int[] player_types, bool inProgress)
     {
         if (librarian != null)
@@ -110,16 +114,16 @@ public class Historian : MonoBehaviour
         //history.PrintHistory();
     }
 
-    public void SetListView(History history)
-    {
-        if (listViewString != null && history != null)
-        {
-            listViewString.DataSource.Clear();
-            string[] strings = history.HistoryStrings();
-            for (int i = 0; strings != null && i < strings.Length; i++)
-                listViewString.DataSource.Add(strings[i]);
-        }
-    }
+    //public void SetListView(History history)
+    //{
+    //    if (listViewString != null && history != null)
+    //    {
+    //        listViewString.DataSource.Clear();
+    //        string[] strings = history.HistoryStrings();
+    //        for (int i = 0; strings != null && i < strings.Length; i++)
+    //            listViewString.DataSource.Add(strings[i]);
+    //    }
+    //}
 
     public void SetFromHistory(History history, bool pushToNetwork=false)
     {
@@ -218,7 +222,7 @@ public class Historian : MonoBehaviour
             history.AddTurn(turn);
             turn = turn.next;
         }
-        SetListView(history);
+        //SetListView(history);
         return history;
     }
 

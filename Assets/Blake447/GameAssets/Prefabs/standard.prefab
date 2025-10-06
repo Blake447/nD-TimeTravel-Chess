@@ -640,9 +640,12 @@ MonoBehaviour:
   pallete: {fileID: 0}
   TemplateSquare: {fileID: 5836053768471333825}
   SquaresRoot: {fileID: 5836053768061347081}
+  mvtime_offsets:
+  - 20
+  - 20
   VisualizerTemplate: {fileID: 5836053768662456632}
   VisualizerRoot: {fileID: 5836053767827065027}
-  dimensions: 0800000010000000
+  dimensions: 0800000008000000
 --- !u!1 &5836053767980019944
 GameObject:
   m_ObjectHideFlags: 0
@@ -1207,6 +1210,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db69ddd8a64dfd84da9d9c0231572f12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  displayName: Standard
+  filenames: []
   next: {fileID: 0}
   board: {fileID: 8276771650054520494}
   m: 0

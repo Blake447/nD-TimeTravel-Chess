@@ -52,6 +52,8 @@ MonoBehaviour:
   allowPromotions: 1
   friendlyVisualizer: 1
   enemyVisualizer: 1
+  allowDrops: 0
+  dropsIndex: 0
   multiverse_offset: 15
   timetravel_offset: 15
   timeIndex: 3

@@ -52,6 +52,12 @@ MonoBehaviour:
   allowPromotions: 0
   friendlyVisualizer: 1
   enemyVisualizer: 1
+  allowDrops: 0
+  dropsIndex: 0
+  multiverse_offset: 40
+  timetravel_offset: 20
   timeIndex: 3
   dimensions: 0800000010000000
   board_state: 
+  forwards: 0000000001000000
+  laterals: 0100000000000000

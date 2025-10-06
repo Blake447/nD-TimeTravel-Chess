@@ -59,5 +59,5 @@ MonoBehaviour:
   timeIndex: 5
   dimensions: 06000000060000000600000006000000
   board_state: 
-  forwards: 
-  laterals: 
+  forwards: 00000000000000000000000001000000
+  laterals: 01000000010000000100000000000000

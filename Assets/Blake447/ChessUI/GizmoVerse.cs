@@ -143,7 +143,9 @@ public class GizmoVerse : MonoBehaviour
     {
         while (purpleArrows.Count < timelineList.Count)
         {
-            purpleArrows.Add(Instantiate(purpleArrowTemplate));
+            PurpleArrow arrow = Instantiate(purpleArrowTemplate);
+            arrow.transform.parent = purplerArrowRoot.transform;
+			purpleArrows.Add(arrow);
         }
         for (int i = 0; i < timelineList.Count; i++)
         {

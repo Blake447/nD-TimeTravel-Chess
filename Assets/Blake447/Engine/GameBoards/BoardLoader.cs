@@ -65,6 +65,72 @@ public class BoardLoader
         }
     }
 
+    static public BoardLayout[] GetSavedLayouts()
+    {
+        List<BoardLayout> layoutList = new List<BoardLayout>();
+        DirectoryInfo dataFolder = new DirectoryInfo(Application.dataPath + "/StreamingAssets/layouts");
+        FileInfo[] dataFiles = dataFolder.GetFiles("*.data", SearchOption.AllDirectories);
+
+        for (int i = 0; i < dataFiles.Length; i++)
+        {
+		    FileStream dataStream = new FileStream(dataFiles[i].FullName, FileMode.Open);
+		    BinaryFormatter converter = new BinaryFormatter();
+		    BoardLayout boardLayout = converter.Deserialize(dataStream) as BoardLayout;
+            if (boardLayout != null) layoutList.Add(boardLayout);
+		    dataStream.Close();
+        }
+        if (Directory.Exists(Application.persistentDataPath + "/layouts"))
+        {
+            dataFolder = new DirectoryInfo(Application.persistentDataPath + "/layouts");
+            dataFiles = dataFolder.GetFiles("*.data");
+		    for (int i = 0; i < dataFiles.Length; i++)
+		    {
+			    FileStream dataStream = new FileStream(dataFiles[i].FullName, FileMode.Open);
+			    BinaryFormatter converter = new BinaryFormatter();
+			    BoardLayout boardLayout = converter.Deserialize(dataStream) as BoardLayout;
+			    if (boardLayout != null) layoutList.Add(boardLayout);
+			    dataStream.Close();
+		    }
+        }
+
+		if (layoutList.Count > 0)
+        {
+            return layoutList.ToArray();
+        }
+		return null;
+    }
+    static public void SaveLayout(BoardLayout layout)
+    {
+        string name = layout.displayName;
+        string board = layout.boardName;
+
+#if UNITY_EDITOR
+        string layoutPath = Application.dataPath + "/StreamingAssets/layouts";
+#else
+        string layoutPath = Application.persistentDataPath + "/layouts";
+#endif
+		string boardPath = layoutPath + "/" + board;
+        if (!Directory.Exists(layoutPath))
+        {
+            Directory.CreateDirectory(layoutPath);
+        }
+        if (!Directory.Exists(boardPath))
+        {
+            Directory.CreateDirectory(boardPath);
+        }
+        string filePath = boardPath + "/" + name + ".data";
+		FileStream dataStream = new FileStream(filePath, FileMode.Create);
+
+		BinaryFormatter converter = new BinaryFormatter();
+		converter.Serialize(dataStream, layout);
+
+		dataStream.Close();
+		Messanger.DisplayMessage("BoardState " + name + " saved to file path " + filePath);
+#if UNITY_EDITOR
+		UnityEditor.AssetDatabase.Refresh();
+		//string layoutPath = Application.dataPath + "/StreamingAssets/layouts";
+#endif
+	}
 
     static public void SaveCustomBoardState(BoardState boardState)
     {

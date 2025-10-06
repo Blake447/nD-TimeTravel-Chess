@@ -404,6 +404,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db69ddd8a64dfd84da9d9c0231572f12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  displayName: Hypertorroid
+  filenames: []
   next: {fileID: 0}
   board: {fileID: 3635190362622385419}
   m: 0
@@ -1084,9 +1086,12 @@ MonoBehaviour:
   pallete: {fileID: 0}
   TemplateSquare: {fileID: 3635190361027642508}
   SquaresRoot: {fileID: 3635190362760948292}
+  mvtime_offsets:
+  - 40
+  - 20
   VisualizerTemplate: {fileID: 3635190361214604917}
   VisualizerRoot: {fileID: 3635190362525648782}
-  dimensions: 0800000010000000
+  dimensions: 100000000800000008000000
 --- !u!1 &3635190362683555749
 GameObject:
   m_ObjectHideFlags: 0

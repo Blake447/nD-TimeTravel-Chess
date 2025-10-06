@@ -637,13 +637,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06077abc203e3344aa45e3a7953f640e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fileName: standard
+  pallete: {fileID: 0}
   TemplateSquare: {fileID: 5836053768471333825}
   SquaresRoot: {fileID: 5836053768061347081}
-  VisualizerRoot: {fileID: 5836053767827065027}
+  mvtime_offsets:
+  - 100
+  - 20
   VisualizerTemplate: {fileID: 5836053768662456632}
-  visualizers: []
-  pieces: 
+  VisualizerRoot: {fileID: 5836053767827065027}
+  dimensions: 0800000010000000
+  fileName: standard
 --- !u!1 &5836053767980019944
 GameObject:
   m_ObjectHideFlags: 0
@@ -1208,6 +1211,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db69ddd8a64dfd84da9d9c0231572f12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  displayName: default
+  filenames: []
+  next: {fileID: 0}
   board: {fileID: 1531613197571825912}
   m: 0
   t: 0

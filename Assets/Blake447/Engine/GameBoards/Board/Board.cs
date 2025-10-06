@@ -15,11 +15,16 @@ public class Board : MonoBehaviour
     protected GameObject[] visualizers;
     [SerializeField] protected Square TemplateSquare;
     [SerializeField] protected GameObject SquaresRoot;
-    protected float[] mvtime_offsets = new float[] { 40.0f, 40.0f };
+    [SerializeField] protected float[] mvtime_offsets = new float[] { 40.0f, 40.0f };
     [SerializeField] protected GameObject VisualizerTemplate;
     [SerializeField] protected GameObject VisualizerRoot;
     [SerializeField] protected int[] dimensions = new int[] {8, 16};
     int[] previous_state;
+
+    public Vector2 GetMVOffsets()
+    {
+        return new Vector2(mvtime_offsets[0], mvtime_offsets[1]);
+    }
 
     public void ConvertLegacy()
     {
@@ -153,6 +158,7 @@ public class Board : MonoBehaviour
             }
         }
     }
+    
     public virtual void SetDimensions()
     { 
     }
